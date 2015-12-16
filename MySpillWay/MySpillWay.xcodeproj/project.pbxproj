@@ -15,6 +15,20 @@
 		77C4783F1C18578D00DA69C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C4783D1C18578D00DA69C8 /* LaunchScreen.storyboard */; };
 		77C4784A1C18578D00DA69C8 /* MySpillWayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C478491C18578D00DA69C8 /* MySpillWayTests.m */; };
 		77C478551C18578D00DA69C8 /* MySpillWayUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C478541C18578D00DA69C8 /* MySpillWayUITests.m */; };
+		77F1CD6D1C200FE200983C3D /* BmobSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD6C1C200FE200983C3D /* BmobSDK.framework */; };
+		77F1CD6F1C20127500983C3D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD6E1C20127500983C3D /* CoreLocation.framework */; };
+		77F1CD711C20128100983C3D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD701C20128100983C3D /* Security.framework */; };
+		77F1CD731C20129200983C3D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD721C20129200983C3D /* CoreGraphics.framework */; };
+		77F1CD751C20129E00983C3D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD741C20129E00983C3D /* MobileCoreServices.framework */; };
+		77F1CD771C2012AA00983C3D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD761C2012AA00983C3D /* CFNetwork.framework */; };
+		77F1CD791C2012B900983C3D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD781C2012B900983C3D /* CoreTelephony.framework */; };
+		77F1CD7B1C2012CB00983C3D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD7A1C2012CB00983C3D /* SystemConfiguration.framework */; };
+		77F1CD7D1C2012D800983C3D /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD7C1C2012D800983C3D /* libz.1.2.5.tbd */; };
+		77F1CD7F1C2012FE00983C3D /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD7E1C2012FE00983C3D /* libicucore.tbd */; };
+		77F1CD811C20131700983C3D /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD801C20131700983C3D /* libsqlite3.tbd */; };
+		77F1CD831C20132B00983C3D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD821C20132B00983C3D /* AVFoundation.framework */; };
+		77F1CD851C20133A00983C3D /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD841C20133A00983C3D /* MediaPlayer.framework */; };
+		8C90FBD2789DC680C2B1BF24 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C82B3F7176E0F4DD114817B2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		329F9CCCF353338D18BBFDDC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4EA7253CC992F148233BDD0D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		77C4782C1C18578D00DA69C8 /* MySpillWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySpillWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C478301C18578D00DA69C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77C478321C18578D00DA69C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +67,20 @@
 		77C478501C18578D00DA69C8 /* MySpillWayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySpillWayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77C478541C18578D00DA69C8 /* MySpillWayUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySpillWayUITests.m; sourceTree = "<group>"; };
 		77C478561C18578D00DA69C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77F1CD6C1C200FE200983C3D /* BmobSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BmobSDK.framework; path = ../../../Downloads/Bmob_SDK_iOS_v1.6.5/BmobSDK.framework; sourceTree = "<group>"; };
+		77F1CD6E1C20127500983C3D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		77F1CD701C20128100983C3D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		77F1CD721C20129200983C3D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		77F1CD741C20129E00983C3D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		77F1CD761C2012AA00983C3D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		77F1CD781C2012B900983C3D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		77F1CD7A1C2012CB00983C3D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		77F1CD7C1C2012D800983C3D /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		77F1CD7E1C2012FE00983C3D /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		77F1CD801C20131700983C3D /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		77F1CD821C20132B00983C3D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		77F1CD841C20133A00983C3D /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		C82B3F7176E0F4DD114817B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +88,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77F1CD851C20133A00983C3D /* MediaPlayer.framework in Frameworks */,
+				77F1CD831C20132B00983C3D /* AVFoundation.framework in Frameworks */,
+				77F1CD811C20131700983C3D /* libsqlite3.tbd in Frameworks */,
+				77F1CD7F1C2012FE00983C3D /* libicucore.tbd in Frameworks */,
+				77F1CD7D1C2012D800983C3D /* libz.1.2.5.tbd in Frameworks */,
+				77F1CD7B1C2012CB00983C3D /* SystemConfiguration.framework in Frameworks */,
+				77F1CD791C2012B900983C3D /* CoreTelephony.framework in Frameworks */,
+				77F1CD771C2012AA00983C3D /* CFNetwork.framework in Frameworks */,
+				77F1CD751C20129E00983C3D /* MobileCoreServices.framework in Frameworks */,
+				77F1CD731C20129200983C3D /* CoreGraphics.framework in Frameworks */,
+				77F1CD711C20128100983C3D /* Security.framework in Frameworks */,
+				77F1CD6F1C20127500983C3D /* CoreLocation.framework in Frameworks */,
+				8C90FBD2789DC680C2B1BF24 /* libPods.a in Frameworks */,
+				77F1CD6D1C200FE200983C3D /* BmobSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,13 +122,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36F47E37EA826A6B95583346 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				329F9CCCF353338D18BBFDDC /* Pods.debug.xcconfig */,
+				4EA7253CC992F148233BDD0D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		77C478231C18578D00DA69C8 = {
 			isa = PBXGroup;
 			children = (
+				77D54F931C214C02002B6B44 /* SWUserRegistAndLogin */,
+				77F1CD6C1C200FE200983C3D /* BmobSDK.framework */,
 				77C4782E1C18578D00DA69C8 /* MySpillWay */,
 				77C478481C18578D00DA69C8 /* MySpillWayTests */,
 				77C478531C18578D00DA69C8 /* MySpillWayUITests */,
 				77C4782D1C18578D00DA69C8 /* Products */,
+				36F47E37EA826A6B95583346 /* Pods */,
+				912500F4D27D0321DC235759 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +197,57 @@
 			path = MySpillWayUITests;
 			sourceTree = "<group>";
 		};
+		77D54F931C214C02002B6B44 /* SWUserRegistAndLogin */ = {
+			isa = PBXGroup;
+			children = (
+				77D54F961C214DF2002B6B44 /* Controllers */,
+				77D54F951C214DE7002B6B44 /* Views */,
+				77D54F941C214C6F002B6B44 /* Models */,
+			);
+			name = SWUserRegistAndLogin;
+			sourceTree = "<group>";
+		};
+		77D54F941C214C6F002B6B44 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		77D54F951C214DE7002B6B44 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		77D54F961C214DF2002B6B44 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		912500F4D27D0321DC235759 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77F1CD841C20133A00983C3D /* MediaPlayer.framework */,
+				77F1CD821C20132B00983C3D /* AVFoundation.framework */,
+				77F1CD801C20131700983C3D /* libsqlite3.tbd */,
+				77F1CD7E1C2012FE00983C3D /* libicucore.tbd */,
+				77F1CD7C1C2012D800983C3D /* libz.1.2.5.tbd */,
+				77F1CD7A1C2012CB00983C3D /* SystemConfiguration.framework */,
+				77F1CD781C2012B900983C3D /* CoreTelephony.framework */,
+				77F1CD761C2012AA00983C3D /* CFNetwork.framework */,
+				77F1CD741C20129E00983C3D /* MobileCoreServices.framework */,
+				77F1CD721C20129200983C3D /* CoreGraphics.framework */,
+				77F1CD701C20128100983C3D /* Security.framework */,
+				77F1CD6E1C20127500983C3D /* CoreLocation.framework */,
+				C82B3F7176E0F4DD114817B2 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +255,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 77C478591C18578D00DA69C8 /* Build configuration list for PBXNativeTarget "MySpillWay" */;
 			buildPhases = (
+				AAEB28C82B42A1A6E8744BD2 /* Check Pods Manifest.lock */,
 				77C478281C18578D00DA69C8 /* Sources */,
 				77C478291C18578D00DA69C8 /* Frameworks */,
 				77C4782A1C18578D00DA69C8 /* Resources */,
+				0CEF0518AF4E9218D95FB37F /* Embed Pods Frameworks */,
+				EA867901E0D1AF1F9CCD0148 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +375,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CEF0518AF4E9218D95FB37F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAEB28C82B42A1A6E8744BD2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EA867901E0D1AF1F9CCD0148 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		77C478281C18578D00DA69C8 /* Sources */ = {
@@ -411,6 +570,7 @@
 		};
 		77C4785A1C18578D00DA69C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 329F9CCCF353338D18BBFDDC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MySpillWay/Info.plist;
@@ -422,6 +582,7 @@
 		};
 		77C4785B1C18578D00DA69C8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EA7253CC992F148233BDD0D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MySpillWay/Info.plist;
@@ -498,6 +659,7 @@
 				77C4785B1C18578D00DA69C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77C4785C1C18578D00DA69C8 /* Build configuration list for PBXNativeTarget "MySpillWayTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +668,7 @@
 				77C4785E1C18578D00DA69C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77C4785F1C18578D00DA69C8 /* Build configuration list for PBXNativeTarget "MySpillWayUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +677,7 @@
 				77C478611C18578D00DA69C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
