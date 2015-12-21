@@ -43,27 +43,28 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-</dict>
-<!--完全取消http请求限制-->
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-</dict>
-<!--指定部分网址支持http-->
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSExceptionDomains</key>
+    <key>NSAppTransportSecurity</key>
     <dict>
-        <key>yourserver.com</key>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
         <dict>
-            <key>NSIncludesSubdomains</key>
-            <true/>
-            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-            <key>NSTemporaryExceptionMinimumTLSVersion</key>
-            <string>TLSv1.1</string>
+            <key>yourserver.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <key>NSTemporaryExceptionMinimumTLSVersion</key>
+                <string>TLSv1.1</string>
+            </dict>
         </dict>
     </dict>
+
+
 </dict>
+
 </plist>
