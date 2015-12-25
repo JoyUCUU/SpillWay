@@ -10,7 +10,7 @@
 #import <AFNetworking.h>
 #import "SWRegistViewController.h"
 #import "SWMainPageViewController.h"
-
+#import  "BmobSDK/Bmob.h"
 @interface AppDelegate ()
 
 @end
@@ -30,8 +30,11 @@
     
     //将登陆初始界面的初始界面放在前面
     [self.window bringSubviewToFront:rVC.view];
-//    [self.window makeKeyAndVisible];
+    [self.window makeKeyAndVisible];
     self.window.rootViewController = rVC;
+    
+    //设置应用的BmobKey
+    [Bmob registerWithAppKey:@"c1645bac8ec10a5d847a50d9fc93978a"];
     
    
     return YES;
