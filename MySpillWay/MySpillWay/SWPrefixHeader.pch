@@ -33,3 +33,17 @@
 
 
 #define  kNavTitleFontSize 18
+
+/**
+ * Creates \c __weak shadow variables for each of the variables provided as
+ * arguments, which can later be made strong again with #strongify.
+ *
+ * This is typically used to weakly reference variables in a block, but then
+ * ensure that the variables stay alive during the actual execution of the block
+ * (if they were live upon entry).
+ *
+ * See #strongify for an example of usage.
+ */
+#define weakify(...) \
+rac_keywordify \
+metamacro_foreach_cxt(rac_weakify_,, __weak, __VA_ARGS__)

@@ -7,12 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import <AFNetworking.h>
+#import "Bmob.h"
 #import "SWRegistViewController.h"
-#import "SWMainPageViewController.h"
-#import  "BmobSDK/Bmob.h"
+#import "BlackTableViewController.h"
+#import "WhiteTableViewController.h"
+#import "ViewController.h"
+#import "JTBaseNavigationController.h"
+#import "JTNavigationController.h"
 @interface AppDelegate ()
-
+@property (nonatomic ,strong) UITabBarController *myTabBarViewController;
 @end
 
 @implementation AppDelegate
@@ -20,24 +23,42 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //初始化window
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor grayColor];
-    //创建登陆初始界面、和注册界面
-    SWRegistViewController *rVC = [[SWRegistViewController alloc] init];
-    SWMainPageViewController *mpVC = [[SWMainPageViewController alloc] init];
-    [self.window addSubview:rVC.view];
-    [self.window addSubview:mpVC.view];
+    self.window.rootViewController = [[JTBaseNavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
     
-    //将登陆初始界面的初始界面放在前面
-    [self.window bringSubviewToFront:rVC.view];
+//     开启全屏返回模式
+    [JTBaseNavigationController shareNavgationController].fullScreenPopGestureEnable = YES;
+    [JTBaseNavigationController shareNavgationController].backButtonImage = [UIImage imageNamed:@"backImage"];//设置返回按钮
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = rVC;
     
-    //设置应用的BmobKey
+     UINavigationBar *bar=[UINavigationBar appearance];
+     UIBarButtonItem *barItem=[UIBarButtonItem appearance];
+    //2. 设置导航栏文字的主题
+    [bar setTitleTextAttributes:@{
+                                  NSForegroundColorAttributeName:[UIColor whiteColor],
+                                  }];
+    //设置navigationbaritem上面的颜色  该item上边的文字样式
+
+    NSDictionary *fontDic=@{
+                            NSForegroundColorAttributeName:[UIColor whiteColor],
+                            NSFontAttributeName:[UIFont systemFontOfSize:16.f],  //粗体
+                            };
+    [barItem setTitleTextAttributes:fontDic
+                           forState:UIControlStateNormal];
+    [barItem setTitleTextAttributes:fontDic
+                           forState:UIControlStateHighlighted];
+    // 5.设置状态栏样式
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
     [Bmob registerWithAppKey:@"c1645bac8ec10a5d847a50d9fc93978a"];
     
    
     return YES;
+}
+-(void)sendPost{
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

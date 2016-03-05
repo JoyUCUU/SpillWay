@@ -5,11 +5,10 @@
 //  Created by 刘华军 on 15/12/18.
 //  Copyright © 2015年 JoyLiu. All rights reserved.
 //
-#import  "BmobSDK/Bmob.h"
-#import "SWRegistUserViewController.h"
-#import "MHGlobalFunction.h"
-#import "SWMainPageViewController.h"
-
+#import  "SWRegistUserViewController.h"
+#import  "SWMainPageViewController.h"
+#import  "ViewController.h"
+#import  "Bmob.h"
 
 @interface SWRegistUserViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *registButton;
@@ -23,6 +22,12 @@
 
 @implementation SWRegistUserViewController
 
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if ([super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"主页面" image:[UIImage imageNamed:@"settingBtn_Nav"] tag:2];
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavigationItem];
@@ -48,12 +53,11 @@
     [self.navigationController popoverPresentationController];
 }
 -(void)regist{
-    SWMainPageViewController *mpVC = [[SWMainPageViewController alloc] init];
-    [self presentViewController:mpVC animated:NO completion:nil];
+    ViewController *mainVC = [[ViewController alloc] init];
+    [self presentViewController:mainVC animated:NO completion:nil];
         BmobUser *buser = [[BmobUser alloc] init];
         buser.mobilePhoneNumber = self.phoneNumber.text;
         buser.password = self.password.text;
-    //    buser.email = @"xxx@gmail.com";
         [buser signUpOrLoginInbackgroundWithSMSCode:self.checkCode.text block:^(BOOL isSuccessful, NSError *error) {
             if (error) {
                 NSLog(@"%@",error);
@@ -71,7 +75,7 @@
     NSString *number = self.phoneNumber.text;
     NSLog(@"%@",number);
     [BmobSMS requestSMSCodeInBackgroundWithPhoneNumber:self.phoneNumber.text andTemplate:@"test" resultBlock:^(int number, NSError *error) {
-        if (error) {
+       if (error) {
             NSLog(@"%@",error);
         } else {
             //获得smsID
