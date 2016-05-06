@@ -68,6 +68,8 @@
 		77D60CB51C252811004CDC0E /* libMJRefresh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D60CAF1C252811004CDC0E /* libMJRefresh.a */; };
 		77D60CB61C252811004CDC0E /* libPOP+MCAnimate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D60CB01C252811004CDC0E /* libPOP+MCAnimate.a */; };
 		77D60CB71C252811004CDC0E /* libRegexKitLite-NoWarning.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77D60CB11C252811004CDC0E /* libRegexKitLite-NoWarning.a */; };
+		77DAB1C91CDCC691003BC7F7 /* SWSetScreenTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77DAB1C71CDCC691003BC7F7 /* SWSetScreenTableViewController.m */; };
+		77DAB1CA1CDCC691003BC7F7 /* SWSetScreenTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77DAB1C81CDCC691003BC7F7 /* SWSetScreenTableViewController.xib */; };
 		77F1CD6F1C20127500983C3D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD6E1C20127500983C3D /* CoreLocation.framework */; };
 		77F1CD711C20128100983C3D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD701C20128100983C3D /* Security.framework */; };
 		77F1CD731C20129200983C3D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F1CD721C20129200983C3D /* CoreGraphics.framework */; };
@@ -184,6 +186,9 @@
 		77D60CB01C252811004CDC0E /* libPOP+MCAnimate.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPOP+MCAnimate.a"; path = "Pods/../build/Debug-iphoneos/libPOP+MCAnimate.a"; sourceTree = "<group>"; };
 		77D60CB11C252811004CDC0E /* libRegexKitLite-NoWarning.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libRegexKitLite-NoWarning.a"; path = "Pods/../build/Debug-iphoneos/libRegexKitLite-NoWarning.a"; sourceTree = "<group>"; };
 		77D60CB21C252811004CDC0E /* libTPKeyboardAvoiding.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTPKeyboardAvoiding.a; path = "Pods/../build/Debug-iphoneos/libTPKeyboardAvoiding.a"; sourceTree = "<group>"; };
+		77DAB1C61CDCC691003BC7F7 /* SWSetScreenTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWSetScreenTableViewController.h; sourceTree = "<group>"; };
+		77DAB1C71CDCC691003BC7F7 /* SWSetScreenTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWSetScreenTableViewController.m; sourceTree = "<group>"; };
+		77DAB1C81CDCC691003BC7F7 /* SWSetScreenTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWSetScreenTableViewController.xib; sourceTree = "<group>"; };
 		77F1CD6E1C20127500983C3D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		77F1CD701C20128100983C3D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		77F1CD721C20129200983C3D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -293,6 +298,9 @@
 				779F32371CDC4D340040CE19 /* SWPersonInfoViewController.h */,
 				779F32381CDC4D340040CE19 /* SWPersonInfoViewController.m */,
 				779F32391CDC4D340040CE19 /* SWPersonInfoViewController.xib */,
+				77DAB1C61CDCC691003BC7F7 /* SWSetScreenTableViewController.h */,
+				77DAB1C71CDCC691003BC7F7 /* SWSetScreenTableViewController.m */,
+				77DAB1C81CDCC691003BC7F7 /* SWSetScreenTableViewController.xib */,
 			);
 			name = Conreollers;
 			sourceTree = "<group>";
@@ -400,6 +408,7 @@
 		77C4782E1C18578D00DA69C8 /* MySpillWay */ = {
 			isa = PBXGroup;
 			children = (
+				77DAB1C21CDCB228003BC7F7 /* SWSettings */,
 				779F32411CDC73A10040CE19 /* background1.png */,
 				779F32421CDC73A10040CE19 /* background3.png */,
 				779F32431CDC73A10040CE19 /* choose1.png */,
@@ -495,6 +504,37 @@
 				779F323E1CDC71EE0040CE19 /* SWChooseFormLoginViewController.xib */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		77DAB1C21CDCB228003BC7F7 /* SWSettings */ = {
+			isa = PBXGroup;
+			children = (
+				77DAB1C51CDCB2AE003BC7F7 /* Views */,
+				77DAB1C41CDCB2A5003BC7F7 /* Controllers */,
+				77DAB1C31CDCB298003BC7F7 /* Models */,
+			);
+			name = SWSettings;
+			sourceTree = "<group>";
+		};
+		77DAB1C31CDCB298003BC7F7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		77DAB1C41CDCB2A5003BC7F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		77DAB1C51CDCB2AE003BC7F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		912500F4D27D0321DC235759 /* Frameworks */ = {
@@ -662,6 +702,7 @@
 				777C27961C8870D700A563EF /* WhiteTableViewController.xib in Resources */,
 				779EC9E51C22D75800991907 /* 86.png in Resources */,
 				77D134A31C390461006F6ADF /* iconfont.ttf in Resources */,
+				77DAB1CA1CDCC691003BC7F7 /* SWSetScreenTableViewController.xib in Resources */,
 				779F32491CDC73A10040CE19 /* choose2.png in Resources */,
 				779F32461CDC73A10040CE19 /* background1.png in Resources */,
 				77D134A21C390461006F6ADF /* iconfont.svg in Resources */,
@@ -753,6 +794,7 @@
 				77BC3DB91C89700400E51579 /* UIColor+RandomColor.m in Sources */,
 				77BC3DB51C895D3800E51579 /* JTBaseNavigationController.m in Sources */,
 				77BC3DAA1C89248E00E51579 /* SWGlobalFunction.m in Sources */,
+				77DAB1C91CDCC691003BC7F7 /* SWSetScreenTableViewController.m in Sources */,
 				77C85C2E1C23C87F00306D01 /* SWRegistUserViewController.m in Sources */,
 				77C478311C18578D00DA69C8 /* main.m in Sources */,
 			);

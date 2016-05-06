@@ -8,7 +8,8 @@
 
 #import "SWPersonInfoViewController.h"
 #import "Bmob.h"
-@interface SWPersonInfoViewController ()<UITableViewDelegate>
+#import "SWSetScreenTableViewController.h"
+@interface SWPersonInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -17,42 +18,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人";
-    [self initNavigationItem];
     //标题
     self.navigationItem.title = @"个人";
     //返回箭头的颜色
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //导航栏的颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
--(void)initNavigationItem{
-    //    设置导航栏title
-    self.title=@"圈子";
-    
-    //    舍hi导航栏右边按钮
-//    UIButton *button=[MHGlobalFunction getNavBarButtonItem:@"\U0000e627"];
-//    [button addTarget:self action:@selector(sendPost) forControlEvents:UIControlEventTouchUpInside];
-//    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:button];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+//tableView 左边短15像素的问题
+-(void)viewDidLayoutSubviews
+{
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     if (section == 0) {
         return 1;
     }
@@ -68,38 +63,66 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static  NSString *CellIdentifier = @"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+    CellIdentifier];
+
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+//    //tableView 左边短15像素的问题
+//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [cell setSeparatorInset:UIEdgeInsetsZero];
+//    }
+//    
+//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [cell setLayoutMargins:UIEdgeInsetsZero];
+//    }
+    
+    
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 60, 60)];
             imageView.image = [UIImage imageNamed:@"86.png"];
             [cell.contentView addSubview:imageView];
+            imageView.layer.masksToBounds = YES;
+            imageView.layer.cornerRadius = 30;
+            /*
+             
+             self.myAvatar.frame = CGRectMake(60,60, 40, 40);
+             
+             self.myAvatar.layer.masksToBounds =YES;
+             
+             self.myAvatar.layer.cornerRadius =50;
+             
+             [self.view addSubview:self.myAvatar];
+             */
             BmobUser *bUser = [BmobUser getCurrentUser];
             if (bUser) {
-                cell.textLabel.text = bUser.objectId;
+                UILabel *cellLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 40, 150, 15)];
+                cellLabel.textColor = [UIColor grayColor];
+                cellLabel.text = [NSString stringWithFormat:@"ID:%@",bUser.objectId];
+                [cell.contentView addSubview:cellLabel];
             }
             
         }
     }
     if (indexPath.section == 1) {
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.textLabel.font = [UIFont systemFontOfSize:13];
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"昵称";
+            cell.textLabel.text = @"  昵称 ： 煎蛋";
         }else if (indexPath.row == 1) {
-            cell.textLabel.text = @"昵称";
+            cell.textLabel.text = @"  职业 ： 学生";
         }else if (indexPath.row == 2) {
-            cell.textLabel.text = @"昵称";
+            cell.textLabel.text = @"  爱好 ： 睡觉";
         }else if (indexPath.row == 3) {
-            cell.textLabel.text = @"昵称";
+            cell.textLabel.text = @"  注册时间 ： 2016-5-6";
         }else if (indexPath.row == 4) {
-            cell.textLabel.text = @"昵称";
+            cell.textLabel.text = @"  设置界面";
         }
     }
-
-    // Configure the cell...
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -138,21 +161,23 @@
 }
 */
 
-/*
 #pragma mark - Table view delegate
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here, for example:
     // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    if (indexPath.section == 1) {
+        if (indexPath.row == 4) {
+            SWSetScreenTableViewController *detailViewController = [[SWSetScreenTableViewController alloc] init];
+            [self.navigationController pushViewController:detailViewController animated:YES];
+        
+        }
+    }
+    //取消点击之后的状态
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
+
 
 /*
 #pragma mark - Navigation
