@@ -11,6 +11,7 @@
 #import "UIColor+RandomColor.h"
 #import "SWRegistViewController.h"
 #import  "SWPersonInfoViewController.h"
+#import "SWChooseFormLoginViewController.h"
 @interface WhiteTableViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mytableView;
 
@@ -44,9 +45,9 @@ static NSString *BasicCell1 = @"BasicCell1";
     [self.navigationController pushViewController:piVC animated:YES];
 }
 - (void)didTapNextButton {
-    
-    SWRegistViewController *regLog = [[SWRegistViewController alloc] init];
-    [self presentViewController:regLog animated:YES completion:nil];
+    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
+//    SWRegistViewController *regLog = [[SWRegistViewController alloc] init];
+    [self presentViewController:cfVC animated:YES completion:nil];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;

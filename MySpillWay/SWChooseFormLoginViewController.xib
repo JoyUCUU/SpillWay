@@ -13,6 +13,7 @@
                 <outlet property="coImage1" destination="YyB-LM-FFo" id="4hI-Ql-NkL"/>
                 <outlet property="coImage2" destination="wux-FB-8I5" id="9QN-DW-LpU"/>
                 <outlet property="coImage3" destination="tXp-eH-hUw" id="2c5-uo-NGK"/>
+                <outlet property="regist" destination="lzw-0p-E3l" id="IiL-FK-Fp4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,6 +22,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackGround.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gac-Dx-uXz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="choose1.png" translatesAutoresizingMaskIntoConstraints="NO" id="YyB-LM-FFo">
                     <rect key="frame" x="36" y="140" width="73" height="69"/>
                 </imageView>
@@ -30,34 +34,53 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="choose3.png" translatesAutoresizingMaskIntoConstraints="NO" id="tXp-eH-hUw">
                     <rect key="frame" x="262" y="140" width="73" height="69"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5F-39-nvn">
+                    <rect key="frame" x="262" y="259" width="73" height="30"/>
+                    <color key="backgroundColor" red="1" green="0.66157075139999999" blue="0.26825388160000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <state key="normal" title="QQ登陆">
+                        <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Xp-lEb">
-                    <rect key="frame" x="49" y="259" width="46" height="30"/>
+                    <rect key="frame" x="36" y="259" width="73" height="30"/>
                     <color key="backgroundColor" red="1" green="0.66157075139999999" blue="0.26825388160000002" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="tintColor" red="1" green="0.66157075138374877" blue="0.26825388157418761" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="手机登陆">
                         <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMy-Bi-Qct">
-                    <rect key="frame" x="164" y="259" width="46" height="30"/>
+                    <rect key="frame" x="151" y="259" width="73" height="30"/>
                     <color key="backgroundColor" red="1" green="0.66157075139999999" blue="0.26825388160000002" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <state key="normal" title="微信登陆">
                         <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5F-39-nvn">
-                    <rect key="frame" x="284" y="259" width="46" height="30"/>
-                    <color key="backgroundColor" red="1" green="0.66157075139999999" blue="0.26825388160000002" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="QQ登陆">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzw-0p-E3l">
+                    <rect key="frame" x="151" y="584" width="73" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="去注册？">
                         <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBackGround.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gac-Dx-uXz">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

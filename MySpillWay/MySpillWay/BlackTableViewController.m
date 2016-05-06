@@ -9,6 +9,7 @@
 #import "BlackTableViewController.h"
 #import "SWGlobalFunction.h"
 #import  "SWMainPageViewController.h"
+#import "SWChooseFormLoginViewController.h"
 @interface BlackTableViewController ()
 
 @end
@@ -39,8 +40,9 @@
     
 }
 - (void)didTapNextButton {
-    SWMainPageViewController *mainLogin = [[SWMainPageViewController alloc] init];
-    [self.navigationController pushViewController:mainLogin animated:YES];
+    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
+//    SWMainPageViewController *mainLogin = [[SWMainPageViewController alloc] init];
+    [self.navigationController pushViewController:cfVC animated:YES];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
