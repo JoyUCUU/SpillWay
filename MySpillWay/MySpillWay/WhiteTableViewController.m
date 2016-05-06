@@ -12,6 +12,7 @@
 #import "SWRegistViewController.h"
 #import  "SWPersonInfoViewController.h"
 #import "SWChooseFormLoginViewController.h"
+#import  "SWReleaseViewController.h"
 @interface WhiteTableViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mytableView;
 
@@ -45,9 +46,11 @@ static NSString *BasicCell1 = @"BasicCell1";
     [self.navigationController pushViewController:piVC animated:YES];
 }
 - (void)didTapNextButton {
-    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
+    SWReleaseViewController *reVC = [[SWReleaseViewController alloc] init];
+//    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
 //    SWRegistViewController *regLog = [[SWRegistViewController alloc] init];
-    [self presentViewController:cfVC animated:YES completion:nil];
+//    [self presentViewController:reVC animated:YES completion:nil];
+    [self.navigationController pushViewController:reVC animated:NO];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
