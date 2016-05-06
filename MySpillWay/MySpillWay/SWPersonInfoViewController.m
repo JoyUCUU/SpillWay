@@ -1,55 +1,43 @@
 //
-//  WhiteTableViewController.m
+//  SWPersonInfoViewController.m
 //  MySpillWay
 //
-//  Created by 刘华军 on 16/3/3.
+//  Created by 刘华军 on 16/5/6.
 //  Copyright © 2016年 JoyLiu. All rights reserved.
 //
 
-#import "WhiteTableViewController.h"
-#import "SWMainPageViewController.h"
-#import "UIColor+RandomColor.h"
-#import "SWRegistViewController.h"
-#import  "SWPersonInfoViewController.h"
-@interface WhiteTableViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *mytableView;
+#import "SWPersonInfoViewController.h"
+#import "Bmob.h"
+@interface SWPersonInfoViewController ()<UITableViewDelegate>
 
-@property (nonatomic ,strong) UINavigationController *navigatinVC;
 @end
 
-@implementation WhiteTableViewController
-static NSString *BasicCell1 = @"BasicCell1";
+@implementation SWPersonInfoViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self initTableView];
-    self.title = @"Title";
-    self.view.backgroundColor = [UIColor grayColor];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"个人" style:UIBarButtonItemStylePlain target:self action:@selector(didTapNextButton)];
-    //改变navigationBar的背景颜色
+    self.title = @"个人";
+    [self initNavigationItem];
+    //标题
+    self.navigationItem.title = @"个人";
+    //返回箭头的颜色
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //导航栏的颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting1)];
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-/**
- 初始化板块主页
- */
--(void)initTableView{
-    [_mytableView registerNib:[UINib nibWithNibName:@"BasicCell" bundle:nil] forCellReuseIdentifier:BasicCell1];
-}
--(void)setting1{
+-(void)initNavigationItem{
+    //    设置导航栏title
+    self.title=@"圈子";
     
-    SWPersonInfoViewController *piVC = [[SWPersonInfoViewController alloc] init];
-//    [self presentViewController:piVC animated:YES completion:nil];
-    [self.navigationController pushViewController:piVC animated:YES];
-}
-- (void)didTapNextButton {
-    
-    SWRegistViewController *regLog = [[SWRegistViewController alloc] init];
-    [self presentViewController:regLog animated:YES completion:nil];
-}
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    //    舍hi导航栏右边按钮
+//    UIButton *button=[MHGlobalFunction getNavBarButtonItem:@"\U0000e627"];
+//    [button addTarget:self action:@selector(sendPost) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:button];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -59,27 +47,57 @@ static NSString *BasicCell1 = @"BasicCell1";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+#warning Incomplete implementation, return the number of sections
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+#warning Incomplete implementation, return the number of rows
+    if (section == 0) {
+        return 1;
+    }
+    return 5;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 163.0f;
+    if (indexPath.section == 0) {
+        return 80;
+    }
+    return 44;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:BasicCell1 forIndexPath:indexPath];
-//    if (cell == nil) {
-//        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"BasicCell" owner:self options:nil];
-//        cell = [nib objectAtIndex:0];
-//    }
-//    
-    
+    static  NSString *CellIdentifier = @"CellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 60, 60)];
+            imageView.image = [UIImage imageNamed:@"86.png"];
+            [cell.contentView addSubview:imageView];
+            BmobUser *bUser = [BmobUser getCurrentUser];
+            if (bUser) {
+                cell.textLabel.text = bUser.objectId;
+            }
+            
+        }
+    }
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"昵称";
+        }else if (indexPath.row == 1) {
+            cell.textLabel.text = @"昵称";
+        }else if (indexPath.row == 2) {
+            cell.textLabel.text = @"昵称";
+        }else if (indexPath.row == 3) {
+            cell.textLabel.text = @"昵称";
+        }else if (indexPath.row == 4) {
+            cell.textLabel.text = @"昵称";
+        }
+    }
+
     // Configure the cell...
     
     return cell;

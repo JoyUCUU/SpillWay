@@ -178,7 +178,7 @@
                     <attributedString key="attributedText">
                         <fragment content="泥奏凯！发泄坏心情！好心情！泥奏凯分享！">
                             <attributes>
-                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="29" name="DFWaWaSC-W5"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                             </attributes>

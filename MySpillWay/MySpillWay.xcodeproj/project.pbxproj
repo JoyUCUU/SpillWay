@@ -15,6 +15,15 @@
 		779EC9DB1C22AF5600991907 /* SWRegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779EC9D91C22AF5600991907 /* SWRegistViewController.xib */; };
 		779EC9E31C22B7D100991907 /* loginBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 779EC9E21C22B7D100991907 /* loginBackGround.png */; };
 		779EC9E51C22D75800991907 /* 86.png in Resources */ = {isa = PBXBuildFile; fileRef = 779EC9E41C22D75800991907 /* 86.png */; };
+		779F323A1CDC4D340040CE19 /* SWPersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779F32381CDC4D340040CE19 /* SWPersonInfoViewController.m */; };
+		779F323B1CDC4D340040CE19 /* SWPersonInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779F32391CDC4D340040CE19 /* SWPersonInfoViewController.xib */; };
+		779F323F1CDC71EE0040CE19 /* SWChooseFormLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 779F323D1CDC71EE0040CE19 /* SWChooseFormLoginViewController.m */; };
+		779F32401CDC71EE0040CE19 /* SWChooseFormLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 779F323E1CDC71EE0040CE19 /* SWChooseFormLoginViewController.xib */; };
+		779F32461CDC73A10040CE19 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = 779F32411CDC73A10040CE19 /* background1.png */; };
+		779F32471CDC73A10040CE19 /* background3.png in Resources */ = {isa = PBXBuildFile; fileRef = 779F32421CDC73A10040CE19 /* background3.png */; };
+		779F32481CDC73A10040CE19 /* choose1.png in Resources */ = {isa = PBXBuildFile; fileRef = 779F32431CDC73A10040CE19 /* choose1.png */; };
+		779F32491CDC73A10040CE19 /* choose2.png in Resources */ = {isa = PBXBuildFile; fileRef = 779F32441CDC73A10040CE19 /* choose2.png */; };
+		779F324A1CDC73A10040CE19 /* choose3.png in Resources */ = {isa = PBXBuildFile; fileRef = 779F32451CDC73A10040CE19 /* choose3.png */; };
 		77BC3DAA1C89248E00E51579 /* SWGlobalFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BC3DA91C89248E00E51579 /* SWGlobalFunction.m */; };
 		77BC3DB31C895D3800E51579 /* backImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BC3DAD1C895D3800E51579 /* backImage@2x.png */; };
 		77BC3DB41C895D3800E51579 /* backImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 77BC3DAE1C895D3800E51579 /* backImage@3x.png */; };
@@ -104,6 +113,17 @@
 		779EC9D91C22AF5600991907 /* SWRegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWRegistViewController.xib; sourceTree = "<group>"; };
 		779EC9E21C22B7D100991907 /* loginBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginBackGround.png; sourceTree = "<group>"; };
 		779EC9E41C22D75800991907 /* 86.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 86.png; sourceTree = "<group>"; };
+		779F32371CDC4D340040CE19 /* SWPersonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWPersonInfoViewController.h; sourceTree = "<group>"; };
+		779F32381CDC4D340040CE19 /* SWPersonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWPersonInfoViewController.m; sourceTree = "<group>"; };
+		779F32391CDC4D340040CE19 /* SWPersonInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWPersonInfoViewController.xib; sourceTree = "<group>"; };
+		779F323C1CDC71EE0040CE19 /* SWChooseFormLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWChooseFormLoginViewController.h; sourceTree = "<group>"; };
+		779F323D1CDC71EE0040CE19 /* SWChooseFormLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWChooseFormLoginViewController.m; sourceTree = "<group>"; };
+		779F323E1CDC71EE0040CE19 /* SWChooseFormLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SWChooseFormLoginViewController.xib; sourceTree = "<group>"; };
+		779F32411CDC73A10040CE19 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
+		779F32421CDC73A10040CE19 /* background3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background3.png; sourceTree = "<group>"; };
+		779F32431CDC73A10040CE19 /* choose1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choose1.png; sourceTree = "<group>"; };
+		779F32441CDC73A10040CE19 /* choose2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choose2.png; sourceTree = "<group>"; };
+		779F32451CDC73A10040CE19 /* choose3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choose3.png; sourceTree = "<group>"; };
 		77BC3DA81C89248E00E51579 /* SWGlobalFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWGlobalFunction.h; sourceTree = "<group>"; };
 		77BC3DA91C89248E00E51579 /* SWGlobalFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWGlobalFunction.m; sourceTree = "<group>"; };
 		77BC3DAB1C89260200E51579 /* Configure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configure.h; sourceTree = "<group>"; };
@@ -250,6 +270,47 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		779F322D1CDC45870040CE19 /* SWPerson */ = {
+			isa = PBXGroup;
+			children = (
+				779F32311CDC45C60040CE19 /* Model */,
+				779F32301CDC45BC0040CE19 /* View */,
+				779F322F1CDC45B10040CE19 /* Conreollers */,
+			);
+			name = SWPerson;
+			sourceTree = "<group>";
+		};
+		779F322E1CDC45980040CE19 /* SWRelease */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SWRelease;
+			sourceTree = "<group>";
+		};
+		779F322F1CDC45B10040CE19 /* Conreollers */ = {
+			isa = PBXGroup;
+			children = (
+				779F32371CDC4D340040CE19 /* SWPersonInfoViewController.h */,
+				779F32381CDC4D340040CE19 /* SWPersonInfoViewController.m */,
+				779F32391CDC4D340040CE19 /* SWPersonInfoViewController.xib */,
+			);
+			name = Conreollers;
+			sourceTree = "<group>";
+		};
+		779F32301CDC45BC0040CE19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		779F32311CDC45C60040CE19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		77BC3DAC1C895D3800E51579 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +400,13 @@
 		77C4782E1C18578D00DA69C8 /* MySpillWay */ = {
 			isa = PBXGroup;
 			children = (
+				779F32411CDC73A10040CE19 /* background1.png */,
+				779F32421CDC73A10040CE19 /* background3.png */,
+				779F32431CDC73A10040CE19 /* choose1.png */,
+				779F32441CDC73A10040CE19 /* choose2.png */,
+				779F32451CDC73A10040CE19 /* choose3.png */,
+				779F322E1CDC45980040CE19 /* SWRelease */,
+				779F322D1CDC45870040CE19 /* SWPerson */,
 				77D134961C39042D006F6ADF /* iconfont */,
 				77D54F931C214C02002B6B44 /* SWUserRegistAndLogin */,
 				77C478321C18578D00DA69C8 /* AppDelegate.h */,
@@ -422,6 +490,9 @@
 				77C85C301C23F7FF00306D01 /* SWMainPageViewController.h */,
 				77C85C311C23F7FF00306D01 /* SWMainPageViewController.m */,
 				77C85C321C23F7FF00306D01 /* SWMainPageViewController.xib */,
+				779F323C1CDC71EE0040CE19 /* SWChooseFormLoginViewController.h */,
+				779F323D1CDC71EE0040CE19 /* SWChooseFormLoginViewController.m */,
+				779F323E1CDC71EE0040CE19 /* SWChooseFormLoginViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -572,9 +643,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				77D1349E1C390461006F6ADF /* demo.css in Resources */,
+				779F323B1CDC4D340040CE19 /* SWPersonInfoViewController.xib in Resources */,
 				77D134A41C390461006F6ADF /* iconfont.woff in Resources */,
 				777C279B1C8870F200A563EF /* BlackTableViewController.xib in Resources */,
+				779F324A1CDC73A10040CE19 /* choose3.png in Resources */,
 				77C85C341C23F7FF00306D01 /* SWMainPageViewController.xib in Resources */,
+				779F32401CDC71EE0040CE19 /* SWChooseFormLoginViewController.xib in Resources */,
 				77BC3DBF1C89812000E51579 /* BasicCell.xib in Resources */,
 				77C4783F1C18578D00DA69C8 /* LaunchScreen.storyboard in Resources */,
 				77BC3DB31C895D3800E51579 /* backImage@2x.png in Resources */,
@@ -582,10 +656,14 @@
 				77D1349F1C390461006F6ADF /* demo.html in Resources */,
 				77C4783C1C18578D00DA69C8 /* Assets.xcassets in Resources */,
 				779EC9DB1C22AF5600991907 /* SWRegistViewController.xib in Resources */,
+				779F32471CDC73A10040CE19 /* background3.png in Resources */,
 				77C85C2F1C23C87F00306D01 /* SWRegistUserViewController.xib in Resources */,
+				779F32481CDC73A10040CE19 /* choose1.png in Resources */,
 				777C27961C8870D700A563EF /* WhiteTableViewController.xib in Resources */,
 				779EC9E51C22D75800991907 /* 86.png in Resources */,
 				77D134A31C390461006F6ADF /* iconfont.ttf in Resources */,
+				779F32491CDC73A10040CE19 /* choose2.png in Resources */,
+				779F32461CDC73A10040CE19 /* background1.png in Resources */,
 				77D134A21C390461006F6ADF /* iconfont.svg in Resources */,
 				779EC9E31C22B7D100991907 /* loginBackGround.png in Resources */,
 				77C4783A1C18578D00DA69C8 /* Main.storyboard in Resources */,
@@ -664,9 +742,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				777C279A1C8870F200A563EF /* BlackTableViewController.m in Sources */,
+				779F323A1CDC4D340040CE19 /* SWPersonInfoViewController.m in Sources */,
 				77BC3DB61C895D3800E51579 /* JTNavigationController.m in Sources */,
 				77C478371C18578D00DA69C8 /* ViewController.m in Sources */,
 				77C478341C18578D00DA69C8 /* AppDelegate.m in Sources */,
+				779F323F1CDC71EE0040CE19 /* SWChooseFormLoginViewController.m in Sources */,
 				777C27951C8870D700A563EF /* WhiteTableViewController.m in Sources */,
 				77C85C331C23F7FF00306D01 /* SWMainPageViewController.m in Sources */,
 				779EC9DA1C22AF5600991907 /* SWRegistViewController.m in Sources */,

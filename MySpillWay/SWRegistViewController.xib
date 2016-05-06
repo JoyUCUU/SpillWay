@@ -8,7 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SWRegistViewController">
             <connections>
                 <outlet property="loginButton" destination="Grd-zZ-7k1" id="hwI-xi-yrE"/>
+                <outlet property="myAvatar" destination="tZW-Q3-x2h" id="Z9O-Dh-O5U"/>
+                <outlet property="passWord" destination="GI0-mW-pyb" id="tDB-Jh-8A9"/>
                 <outlet property="registButton" destination="Fpc-VV-HM8" id="hVI-Lz-33f"/>
+                <outlet property="userName" destination="m79-lx-oLr" id="if4-Xy-KON"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
