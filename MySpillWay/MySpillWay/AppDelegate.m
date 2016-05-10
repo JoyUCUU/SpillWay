@@ -5,7 +5,9 @@
 //  Created by 刘华军 on 15/12/9.
 //  Copyright © 2015年 JoyLiu. All rights reserved.
 //
-
+#import "UMSocialSinaSSOHandler.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocial.h"
 #import "AppDelegate.h"
 #import "Bmob.h"
 #import "SWRegistViewController.h"
@@ -14,6 +16,7 @@
 #import "ViewController.h"
 #import "JTBaseNavigationController.h"
 #import "JTNavigationController.h"
+#import  "UMSocialWechatHandler.h"
 @interface AppDelegate ()
 @property (nonatomic ,strong) UITabBarController *myTabBarViewController;
 @end
@@ -26,11 +29,13 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor grayColor];
+    WhiteTableViewController *wtVC = [[WhiteTableViewController alloc] init];
+    
     self.window.rootViewController = [[JTBaseNavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
     
-//     开启全屏返回模式
-    [JTBaseNavigationController shareNavgationController].fullScreenPopGestureEnable = YES;
-    [JTBaseNavigationController shareNavgationController].backButtonImage = [UIImage imageNamed:@"backImage"];//设置返回按钮
+////     开启全屏返回模式
+//    [JTBaseNavigationController shareNavgationController].fullScreenPopGestureEnable = YES;
+//    [JTBaseNavigationController shareNavgationController].backButtonImage = [UIImage imageNamed:@"backImage"];//设置返回按钮
     [self.window makeKeyAndVisible];
     
      UINavigationBar *bar=[UINavigationBar appearance];
@@ -53,10 +58,23 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     [Bmob registerWithAppKey:@"c1645bac8ec10a5d847a50d9fc93978a"];
-    
-   
+    [UMSocialData setAppKey:@"56d95844e0f55abc17000bd4"];
+     [UMSocialWechatHandler setWXAppId:@"wx94197112d01bd1cf" appSecret:@"c5d9e058b1f8ced46390d6db9aca9fe3" url:@"http://www.umeng.com/social"];
+    [UMSocialQQHandler setQQWithAppId:@"1104961375" appKey:@"8HCAIqrafZhmmkxP" url:@"http://www.umeng.com/social"];
+    [UMSocialSinaSSOHandler openNewSinaSSOWithAppKey:@"437466721"
+                                              secret:@"b41cf71b5d5b716e420518a0dd3a9f87"
+                                         RedirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     return YES;
 }
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    BOOL result = [UMSocialSnsService handleOpenURL:url];
+    if (result == FALSE) {
+        //调用其他SDK，例如支付宝SDK等
+    }
+    return result;
+}
+
 -(void)sendPost{
     
 }

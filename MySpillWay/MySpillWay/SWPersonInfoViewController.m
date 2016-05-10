@@ -9,6 +9,7 @@
 #import "SWPersonInfoViewController.h"
 #import "Bmob.h"
 #import "SWSetScreenTableViewController.h"
+#import  "SWModiNickViewController.h"
 @interface SWPersonInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -111,7 +112,7 @@
         cell.textLabel.textColor = [UIColor grayColor];
         cell.textLabel.font = [UIFont systemFontOfSize:13];
         if (indexPath.row == 0) {
-            cell.textLabel.text = @"  昵称 ： 煎蛋";
+            cell.textLabel.text = @"  昵称 ： 烤翅";
         }else if (indexPath.row == 1) {
             cell.textLabel.text = @"  职业 ： 学生";
         }else if (indexPath.row == 2) {
@@ -168,6 +169,10 @@
     // Navigation logic may go here, for example:
     // Create the next view controller.
     if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            SWModiNickViewController *mnVC = [[SWModiNickViewController alloc] init];
+            [self.navigationController pushViewController:mnVC animated:YES];
+        }
         if (indexPath.row == 4) {
             SWSetScreenTableViewController *detailViewController = [[SWSetScreenTableViewController alloc] init];
             [self.navigationController pushViewController:detailViewController animated:YES];

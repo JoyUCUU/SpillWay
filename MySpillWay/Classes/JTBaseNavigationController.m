@@ -68,11 +68,11 @@ static JTBaseNavigationController *baseNavigationController;
     }
 }
 
-- (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
-    JTBaseNavigationController *baseNavigationController = [JTBaseNavigationController shareNavgationController];
-    baseNavigationController.viewControllers = @[[self wrapViewConrollerWithViewController:rootViewController]];
-    return baseNavigationController;
-}
+//- (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
+//    JTBaseNavigationController *baseNavigationController = [JTBaseNavigationController shareNavgationController];
+//    baseNavigationController.viewControllers = @[[self wrapViewConrollerWithViewController:rootViewController]];
+//    return baseNavigationController;
+//}
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     baseNavigationController = [super initWithCoder:aDecoder];
@@ -87,14 +87,14 @@ static JTBaseNavigationController *baseNavigationController;
     return wrapViewController;
 }
 
-- (NSArray<UIViewController *> *)rootViewControllers {
-    NSMutableArray<UIViewController *> *rootViewControllers = [NSMutableArray array];
-    for (UIViewController *viewControllers in self.viewControllers) {
-        UINavigationController *wrapNavController = viewControllers.childViewControllers.firstObject;
-        [rootViewControllers addObject:wrapNavController.viewControllers.firstObject];
-    }
-    return rootViewControllers.copy;
-}
+//- (NSArray<UIViewController *> *)rootViewControllers {
+//    NSMutableArray<UIViewController *> *rootViewControllers = [NSMutableArray array];
+//    for (UIViewController *viewControllers in self.viewControllers) {
+//        UINavigationController *wrapNavController = viewControllers.childViewControllers.firstObject;
+//        [rootViewControllers addObject:wrapNavController.viewControllers.firstObject];
+//    }
+//    return rootViewControllers.copy;
+//}
 
 //解决某些情况push会卡死的情况
 - (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {

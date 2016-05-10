@@ -5,7 +5,7 @@
 //  Created by 刘华军 on 16/5/6.
 //  Copyright © 2016年 JoyLiu. All rights reserved.
 //
-
+#import "UMSocial.h"
 #import "SWChooseFormLoginViewController.h"
 #import "SWRegistViewController.h"
 #import "SWRegistUserViewController.h"
@@ -27,6 +27,51 @@
     [self changeImageForm];
     [self.coButton1 addTarget:self action:@selector(phoneLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.regist addTarget:self action:@selector(registUser) forControlEvents:UIControlEventTouchUpInside];
+    [self.coButton2 addTarget:self action:@selector(weixinLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.coButton3 addTarget:self action:@selector(QQLogin) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)QQLogin{
+   // UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];
+    
+ //   snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        //          获取微博用户名、uid、token等
+        
+     //   if (response.responseCode == UMSResponseCodeSuccess) {
+            
+       //     UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToQQ];
+            
+         //   NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+        //}});
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToSina];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        //          获取微博用户名、uid、token等
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary] valueForKey:UMShareToSina];
+            
+            NSLog(@"username is %@, uid is %@, token is %@ url is %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL);
+            
+        }});
+}
+-(void)weixinLogin{
+    UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToWechatSession];
+    
+    snsPlatform.loginClickHandler(self,[UMSocialControllerService defaultControllerService],YES,^(UMSocialResponseEntity *response){
+        
+        if (response.responseCode == UMSResponseCodeSuccess) {
+            
+            UMSocialAccountEntity *snsAccount = [[UMSocialAccountManager socialAccountDictionary]valueForKey:UMShareToWechatSession];
+            
+            NSLog(@"\nusername = %@,\n usid = %@,\n token = %@ iconUrl = %@,\n unionId = %@,\n thirdPlatformUserProfile = %@,\n thirdPlatformResponse = %@ \n, message = %@",snsAccount.userName,snsAccount.usid,snsAccount.accessToken,snsAccount.iconURL, snsAccount.unionId, response.thirdPlatformUserProfile, response.thirdPlatformResponse, response.message);
+            
+        }
+        
+    });
 }
 -(void)phoneLogin{
     SWRegistViewController *rVC = [[SWRegistViewController alloc] init];

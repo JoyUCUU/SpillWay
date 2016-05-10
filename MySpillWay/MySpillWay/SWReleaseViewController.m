@@ -13,14 +13,26 @@
 #define fDeviceHeight ([UIScreen mainScreen].bounds.size.height)
 #import "SWReleaseViewController.h"
 #import "ZXCollectionCell.h"
-@interface SWReleaseViewController ()<ZXCollectionCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+#import <objc/runtime.h>
+@interface SWReleaseViewController ()<ZXCollectionCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *clickButton;
 @property(nonatomic,strong)NSMutableArray * imageArr;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *modeBt;
+@property (weak, nonatomic) IBOutlet UIButton *healPictures;
+@property (weak, nonatomic) IBOutlet UITextField *releaseText;
 @end
 
 @implementation SWReleaseViewController
-
+//unsigned int count = 0;
+//Ivar *ivars = class_copyIvarList([UIAlertAction class], &count);
+//for (int i = 0; i<count; i++) {
+//    // 取出成员变量
+//    Ivar ivar = *(ivars + i);
+//    Ivar ivar = ivars[i];
+//    // 打印成员变量名字
+//    NSLog(@"%s------%s", ivar_getName(ivar),ivar_getTypeEncoding(ivar));
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     //标题
@@ -29,10 +41,61 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     //导航栏的颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
-    self.collectionView.hidden = YES;
+    //右按钮
+    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(rightItemAction)];
+    self.navigationItem.rightBarButtonItem = myButton;
     [self.clickButton addTarget:self action:@selector(choosePictures) forControlEvents:UIControlEventTouchUpInside];
+    [self.modeBt addTarget:self action:@selector(selectMode) forControlEvents:UIControlEventTouchUpInside];
+    [self.healPictures addTarget:self action:@selector(dealwithPicture) forControlEvents:UIControlEventTouchUpInside];
+      self.releaseText.delegate = self;
     [self loadData];
     [self drawUI];
+}
+-(void)selectMode{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *goodAction = [UIAlertAction actionWithTitle:@"好心情" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+//    [goodAction setValue:[UIColor orangeColor] forKey:@"fontTextColor"];
+    UIAlertAction *badAction = [UIAlertAction actionWithTitle:@"坏心情" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+//    [badAction setValue:[UIColor grayColor] forKey:@"fontTextColor"];
+    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alertController addAction:goodAction];
+    [alertController addAction:badAction];
+    [alertController addAction:cancle];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+-(void)dealwithPicture{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *dealpicture1 = [UIAlertAction actionWithTitle:@"模糊" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    //    [goodAction setValue:[UIColor orangeColor] forKey:@"fontTextColor"];
+    UIAlertAction *dealpicture2 = [UIAlertAction actionWithTitle:@"碎片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *dealpicture3 = [UIAlertAction actionWithTitle:@"原图" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *dealpicture4 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    //    [badAction setValue:[UIColor grayColor] forKey:@"fontTextColor"];
+    [alertController addAction:dealpicture1];
+    [alertController addAction:dealpicture2];
+    [alertController addAction:dealpicture3];
+    [alertController addAction:dealpicture4];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+//当点击键盘上return按钮的时候调用
+{
+    //代理记录了当前正在工作的UITextField的实例，因此你点击哪个UITextField对象，形参就是哪个UITextField对象
+    [textField resignFirstResponder];//键盘回收代码
+    return YES;
 }
 -(void)loadData{
 //    NSArray * arr = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7"];

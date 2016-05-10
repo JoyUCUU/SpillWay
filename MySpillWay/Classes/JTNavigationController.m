@@ -69,21 +69,21 @@
     return wrapViewController;
 }
 
-- (UITabBarItem *)tabBarItem {
-    return [self rootViewController].tabBarItem;
-}
+//- (UITabBarItem *)tabBarItem {
+//    return [self rootViewController].tabBarItem;
+//}
 
 - (NSString *)title {
     return [self rootViewController].title;
 }
 
-- (UIViewController *)childViewControllerForStatusBarStyle {
-    return [self rootViewController];
-}
+//- (UIViewController *)childViewControllerForStatusBarStyle {
+//    return [self rootViewController];
+//}
 
-- (UIViewController *)childViewControllerForStatusBarHidden {
-    return [self rootViewController];
-}
+//- (UIViewController *)childViewControllerForStatusBarHidden {
+//    return [self rootViewController];
+//}
 
 - (UIViewController *)rootViewController {
     JTWrapNavigationController *wrapNavController = self.childViewControllers.firstObject;
@@ -101,24 +101,24 @@
 @implementation JTNavigationController
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self setNavigationBarHidden:YES];
-}
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    [self setNavigationBarHidden:YES];
+//}
+//
+//- (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
+//    if (self = [super init]) {
+//        self.viewControllers = @[[JTWrapViewController wrapViewControllerWithViewController:rootViewController]];
+//    }
+//    return self;
+//}
 
-- (instancetype)initWithRootViewController:(UIViewController *)rootViewController {
-    if (self = [super init]) {
-        self.viewControllers = @[[JTWrapViewController wrapViewControllerWithViewController:rootViewController]];
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-        self.viewControllers = @[[JTWrapViewController wrapViewControllerWithViewController:self.viewControllers.firstObject]];
-    }
-    return self;
-}
+//- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+//    if (self = [super initWithCoder:aDecoder]) {
+//        self.viewControllers = @[[JTWrapViewController wrapViewControllerWithViewController:self.viewControllers.firstObject]];
+//    }
+//    return self;
+//}
 
 @end
 // 版权属于原作者

@@ -57,7 +57,7 @@
         cell.textLabel.text = @"账号修改";
          cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }else if (indexPath.row == 2 ){
-        cell.textLabel.text = @"清理缓存                                                                         33M";
+        cell.textLabel.text = @"清理缓存                                                                          0M";
     }else if (indexPath.row == 3){
         cell.textLabel.text = @"意见反馈";
          cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

@@ -30,7 +30,13 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initNavigationItem];
+//    [self initNavigationItem];
+    //标题
+//    self.navigationItem.title = @"修改昵称";
+    //返回箭头的颜色
+//    self.navigationController.navigationBar.tintColor = [UIColor clearColor];
+    //导航栏的颜色
+//    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
     
     [self.registButton addTarget:self action:@selector(regist) forControlEvents:UIControlEventTouchUpInside];
     [_requestCheckCode addTarget:self action:@selector(requestCheckCoder) forControlEvents:UIControlEventTouchUpInside];
@@ -42,13 +48,13 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)initNavigationItem{
-    self.title = @"注册";
-//    UIButton *leftButton = [MHGlobalFunction getIconFontBarButtonItem:@"取消" rect:CGRectMake(0, 0, 32, 30) size:kBackButtonFontSize];
-    UIButton *leftButton = [[UIButton alloc] init];
-    [leftButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-}
+//-(void)initNavigationItem{
+//    self.title = @"注册";
+////    UIButton *leftButton = [MHGlobalFunction getIconFontBarButtonItem:@"取消" rect:CGRectMake(0, 0, 32, 30) size:kBackButtonFontSize];
+//    UIButton *leftButton = [[UIButton alloc] init];
+//    [leftButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+//}
 -(void)cancle{
     [self.navigationController popoverPresentationController];
 }
