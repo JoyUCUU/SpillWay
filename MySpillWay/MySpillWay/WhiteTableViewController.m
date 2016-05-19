@@ -59,11 +59,11 @@ static NSString *BasicCell1 = @"BasicCell1";
     [self.navigationController pushViewController:piVC animated:YES];
 }
 - (void)didTapNextButton {
-//    SWReleaseViewController *reVC = [[SWReleaseViewController alloc] init];
-    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
+    SWReleaseViewController *reVC = [[SWReleaseViewController alloc] init];
+//    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
 //    SWRegistViewController *regLog = [[SWRegistViewController alloc] init];
-    [self presentViewController:cfVC animated:YES completion:nil];
-//    [self.navigationController pushViewController:cfVC animated:NO];
+//    [self presentViewController:reVC animated:YES completion:nil];
+    [self.navigationController pushViewController:reVC animated:NO];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;

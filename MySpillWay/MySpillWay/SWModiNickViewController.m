@@ -7,7 +7,7 @@
 //
 
 #import "SWModiNickViewController.h"
-
+#import "Bmob.h"
 @interface SWModiNickViewController ()
 
 @end
@@ -24,7 +24,7 @@
     //导航栏的颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
     //右按钮
-    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(rightItemAction)];
+    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonSystemItemDone  target:self action:@selector(rightItemAction)];
     self.navigationItem.rightBarButtonItem = myButton;
 //    UIBarButtonItem * right = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(rightItemAction)];
 //    self.navigationItem.rightBarButtonItem = right;
@@ -34,10 +34,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)rightItemAction{
-    
-}
+//-(void)rightItemAction{
+////    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"nil" message:@"网络连接错误，请检查网络重试" preferredStyle:UIAlertControllerStyleAlert];
+////    [self presentViewController:alertController animated:YES completion:nil];
+//  
+//
+//}
 /*
+ 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -63,6 +63,8 @@
     
 }
 -(void)login{
+
+//    [self presentViewController:alertController animated:YES completion:nil];
     NSString  *myUsername = self.userName.text;
     NSString  *mypassword = self.passWord.text;
     [BmobUser loginInbackgroundWithMobilePhoneNumber:myUsername andSMSCode:mypassword block:^(BmobUser *user, NSError *error) {

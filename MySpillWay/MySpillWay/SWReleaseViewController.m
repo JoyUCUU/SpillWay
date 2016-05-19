@@ -14,6 +14,7 @@
 #import "SWReleaseViewController.h"
 #import "ZXCollectionCell.h"
 #import <objc/runtime.h>
+#import  "Bmob.h"
 @interface SWReleaseViewController ()<ZXCollectionCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *clickButton;
 @property(nonatomic,strong)NSMutableArray * imageArr;
@@ -21,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *modeBt;
 @property (weak, nonatomic) IBOutlet UIButton *healPictures;
 @property (weak, nonatomic) IBOutlet UITextField *releaseText;
+@property (assign, nonatomic) NSString *isGood;
+@property (strong,nonatomic) NSString *dealID;
 @end
 
 @implementation SWReleaseViewController
@@ -42,7 +45,7 @@
     //导航栏的颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
     //右按钮
-    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(rightItemAction)];
+    UIBarButtonItem *myButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(finishAction)];
     self.navigationItem.rightBarButtonItem = myButton;
     [self.clickButton addTarget:self action:@selector(choosePictures) forControlEvents:UIControlEventTouchUpInside];
     [self.modeBt addTarget:self action:@selector(selectMode) forControlEvents:UIControlEventTouchUpInside];
@@ -54,13 +57,16 @@
 -(void)selectMode{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *goodAction = [UIAlertAction actionWithTitle:@"好心情" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.isGood = @"0";
     }];
 //    [goodAction setValue:[UIColor orangeColor] forKey:@"fontTextColor"];
     UIAlertAction *badAction = [UIAlertAction actionWithTitle:@"坏心情" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.isGood = @"1";
         
     }];
 //    [badAction setValue:[UIColor grayColor] forKey:@"fontTextColor"];
     UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        self.isGood = NULL;
         
     }];
     [alertController addAction:goodAction];
@@ -72,16 +78,17 @@
 -(void)dealwithPicture{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *dealpicture1 = [UIAlertAction actionWithTitle:@"模糊" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        self.dealID = @"0";
     }];
     //    [goodAction setValue:[UIColor orangeColor] forKey:@"fontTextColor"];
     UIAlertAction *dealpicture2 = [UIAlertAction actionWithTitle:@"碎片" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        self.dealID = @"1";
     }];
     UIAlertAction *dealpicture3 = [UIAlertAction actionWithTitle:@"原图" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
+        self.dealID = @"2";
     }];
     UIAlertAction *dealpicture4 = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
+        self.dealID = @"3";
     }];
     //    [badAction setValue:[UIColor grayColor] forKey:@"fontTextColor"];
     [alertController addAction:dealpicture1];
@@ -248,14 +255,37 @@
 {
     return YES;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)finishAction{
+    BmobUser *bUser = [BmobUser getCurrentUser];
+    BmobObject *release = [BmobObject objectWithClassName:@"release"];
+    [release setObject:bUser forKey:@"userID"];
+    [release setObject:self.releaseText.text forKey:@"content"];
+    [release setObject:self.isGood forKey:@"mood"];
+    [release setObject:self.dealID forKey:@"pictureDeal"];
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *fileString = [NSString stringWithFormat:@"%@/86.png",[bundle bundlePath]];
+    NSLog(@"self.image %@",self.imageArr);
+    [release saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            NSLog(@"%@",release);
+        }else if (error){
+            NSLog(@"%@",error);
+        }
+    }];
+    [BmobFile filesUploadBatchWithPaths:@[fileString] progressBlock:^(int index, float progress) {
+        NSLog(@"index %d progress %f",index,progress);
+    } resultBlock:^(NSArray *array, BOOL isSuccessful, NSError *error) {
+        BmobObject *obj = [[BmobObject alloc] initWithClassName:@"release"];
+        for (int i = 0; i < array.count; i ++) {
+            BmobFile *file = array[i];
+            NSString *key = [NSString stringWithFormat:@"testFile%d",i];
+            [obj setObject:file forKey:key];
+        }
+        [obj saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+            
+        }];
+    }];
+    
 }
-*/
 
 @end
