@@ -643,12 +643,12 @@
 				77C85C2B1C23C87F00306D01 /* SWRegistUserViewController.h */,
 				77C85C2C1C23C87F00306D01 /* SWRegistUserViewController.m */,
 				77C85C2D1C23C87F00306D01 /* SWRegistUserViewController.xib */,
-				77C85C301C23F7FF00306D01 /* SWMainPageViewController.h */,
 				77C85C311C23F7FF00306D01 /* SWMainPageViewController.m */,
 				77C85C321C23F7FF00306D01 /* SWMainPageViewController.xib */,
 				779F323C1CDC71EE0040CE19 /* SWChooseFormLoginViewController.h */,
 				779F323D1CDC71EE0040CE19 /* SWChooseFormLoginViewController.m */,
 				779F323E1CDC71EE0040CE19 /* SWChooseFormLoginViewController.xib */,
+				77C85C301C23F7FF00306D01 /* SWMainPageViewController.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

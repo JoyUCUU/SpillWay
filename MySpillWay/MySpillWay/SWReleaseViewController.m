@@ -15,15 +15,23 @@
 #import "ZXCollectionCell.h"
 #import <objc/runtime.h>
 #import  "Bmob.h"
+#import "WhiteTableViewController.h"
+#import "AppDelegate.h"
 @interface SWReleaseViewController ()<ZXCollectionCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *clickButton;
 @property(nonatomic,strong)NSMutableArray * imageArr;
+@property(nonatomic,strong)NSMutableArray * imageArrPlaces;
+@property(nonatomic,strong)NSMutableArray * imageArrPlacesURL;
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *modeBt;
 @property (weak, nonatomic) IBOutlet UIButton *healPictures;
 @property (weak, nonatomic) IBOutlet UITextField *releaseText;
 @property (assign, nonatomic) NSString *isGood;
 @property (strong,nonatomic) NSString *dealID;
+@property (strong ,nonatomic) NSString *ObjectIdString;
+@property (strong ,nonatomic) BmobObject *myRelease;
+@property (strong ,nonatomic) BmobObject *obj;
+@property (strong ,nonatomic) NSString *pictureName;
 @end
 
 @implementation SWReleaseViewController
@@ -108,6 +116,7 @@
 //    NSArray * arr = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7"];
     
     _imageArr = [NSMutableArray array];
+    _imageArrPlaces = [NSMutableArray array];
 //    for (int i=1; i<arr.count; i++) {
 //        NSString * name = [NSString stringWithFormat:@"placehold1.png"];
 //        UIImage * img = [UIImage imageNamed:name];
@@ -189,11 +198,18 @@
 //相机
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    static  int i = 0;
     UIImage *image=[info objectForKey:UIImagePickerControllerEditedImage];
     [self.imageArr addObject:image];
-    
+     self.pictureName = [self saveImage:image WithName:[NSString stringWithFormat:@"%d.png",i]];
+    NSLog(@"%@",self.pictureName);
+    [self.imageArrPlaces addObject:self.pictureName];
+    NSLog(@"imageArrPlaces-------%@",self.imageArrPlaces[0]);
+    i++;
+//    saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
     [picker dismissViewControllerAnimated:YES completion:nil];
     [self.collectionView reloadData];
+    
 }
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
@@ -255,37 +271,118 @@
 {
     return YES;
 }
+
 -(void)finishAction{
-    BmobUser *bUser = [BmobUser getCurrentUser];
-    BmobObject *release = [BmobObject objectWithClassName:@"release"];
-    [release setObject:bUser forKey:@"userID"];
-    [release setObject:self.releaseText.text forKey:@"content"];
-    [release setObject:self.isGood forKey:@"mood"];
-    [release setObject:self.dealID forKey:@"pictureDeal"];
+    //上传图片
+    self.imageArrPlacesURL = [NSMutableArray array];
+    static int nindex = 1;
     NSBundle *bundle = [NSBundle mainBundle];
-    NSString *fileString = [NSString stringWithFormat:@"%@/86.png",[bundle bundlePath]];
-    NSLog(@"self.image %@",self.imageArr);
-    [release saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
-        if (isSuccessful) {
-            NSLog(@"%@",release);
-        }else if (error){
-            NSLog(@"%@",error);
-        }
-    }];
-    [BmobFile filesUploadBatchWithPaths:@[fileString] progressBlock:^(int index, float progress) {
-        NSLog(@"index %d progress %f",index,progress);
+    NSString *fileString1 = self.imageArrPlaces[0];
+    NSString *fileString2 = self.imageArrPlaces[1];
+    NSString *fileString3 = self.imageArrPlaces[2];
+    NSString *fileString4 = self.imageArrPlaces[3];
+    NSLog(@"fileString1??????-------%@",self.imageArrPlaces[0]);
+    BmobObject *obj = [[BmobObject alloc] initWithClassName:@"releaseFile"];
+    BmobFile *file = [[BmobFile alloc] init];
+    [BmobFile filesUploadBatchWithPaths:@[fileString1,fileString2,fileString3,fileString4] progressBlock:^(int index, float progress) {
+//         NSLog(@"self.ObjectIdString提交之后------%@",file.ObjectIdString);
+//        NSLog(@"index %d progress %f",index,progress);
     } resultBlock:^(NSArray *array, BOOL isSuccessful, NSError *error) {
-        BmobObject *obj = [[BmobObject alloc] initWithClassName:@"release"];
+        
         for (int i = 0; i < array.count; i ++) {
             BmobFile *file = array[i];
             NSString *key = [NSString stringWithFormat:@"testFile%d",i];
+            NSLog(@"filr.url-- %@",file.url);
+       
+            [self.imageArrPlacesURL addObject:file.url];
+
             [obj setObject:file forKey:key];
         }
+        
+        NSLog(@"NSMutableArray temp %@",self.imageArrPlacesURL);
         [obj saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+            self.ObjectIdString = obj.objectId;
+            NSLog(@"self.ObjectIdString提交之后------%@",obj.objectId);
+            [self addRelation];
+            [self saveURL];
+            WhiteTableViewController *main = [[WhiteTableViewController alloc] init];
+           [self.navigationController popToRootViewControllerAnimated:NO];
+            
             
         }];
     }];
+    nindex++;
+   
+    
+    //上传数据
+    BmobUser *bUser = [BmobUser getCurrentUser];
+   self.myRelease = [BmobObject objectWithClassName:@"release"];
+    [self.myRelease setObject:bUser forKey:@"userID"];
+    [self.myRelease setObject:self.releaseText.text forKey:@"content"];
+    [self.myRelease setObject:self.isGood forKey:@"mood"];
+    [self.myRelease setObject:self.dealID forKey:@"pictureDeal"];
+
+   
+    [self.myRelease saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        if (isSuccessful) {
+            NSLog(@"%@",self.myRelease.objectId);
+           
+        }else{
+            if (error){
+                NSLog(@"%@",error);
+            }
+    }
+    }];
+    
+    
     
 }
+-(void)saveURL{
+    NSArray *tempArray = [self.imageArrPlacesURL copy];
+    BmobObject *test = [BmobObject objectWithoutDatatWithClassName:@"release" objectId:self.myRelease.objectId];
+    [self.myRelease addObjectsFromArray:tempArray forKey:@"pictureUrl"];
+    [self.myRelease updateInBackground];
+}
+-(void)addRelation{
+    //获取要添加关联的release
+    BmobObject *release1 = [BmobObject objectWithoutDatatWithClassName:@"release" objectId:self.myRelease.objectId];
+    //新建relation对象
+    BmobRelation *relation = [[BmobRelation alloc] init];
+    [relation addObject:[BmobObject objectWithoutDatatWithClassName:@"releaseFile" objectId:self.ObjectIdString]];
+    
+    //添加关联到照片pictures中
+    [release1 addRelation:relation forKey:@"pictures"];
+    //异步更新obj的数据
+    [release1 updateInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
+        
+        if (isSuccessful) {
+            NSLog(@"relation successful");
+        }else{
+            NSLog(@"relation error %@",[error description]);
+        }
+    }];
+    
 
+}
+-(NSString *)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
+{
+       NSData* imageData = UIImagePNGRepresentation(tempImage);
+       NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+       NSString* documentsDirectory = [paths objectAtIndex:0];
+       // Now we get the full path to the file
+       NSString* fullPathToFile = [documentsDirectory stringByAppendingPathComponent:imageName];
+       // and then we write it out
+        [imageData writeToFile:fullPathToFile atomically:NO];
+    
+    return fullPathToFile;
+}
+#pragma mark 从文档目录下获取Documents路径
+- (NSString *)documentFolderPath
+{
+      return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+}
+-(void)test{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
+}
 @end

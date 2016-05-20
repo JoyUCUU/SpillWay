@@ -14,14 +14,50 @@
 #import "SWChooseFormLoginViewController.h"
 #import  "SWReleaseViewController.h"
 #import "BasicCell.h"
+#import "Bmob.h"
+#import  "BmobSDK/BmobProFile.h"
 @interface WhiteTableViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mytableView;
 @property (nonatomic,strong) NSArray *dataList;
 @property (nonatomic ,strong) UINavigationController *navigatinVC;
+@property (nonatomic ,strong) NSArray *downLoaddata;
 @end
 
 @implementation WhiteTableViewController
 static NSString *BasicCell1 = @"BasicCell1";
+#pragma mark -懒加载
+-(NSArray *)downLoaddata{
+    if (_downLoaddata  == nil) {
+        //查找release表
+        BmobQuery *bquery = [BmobQuery queryWithClassName:@"release"];
+        //查找release表
+        bquery.limit = 10;
+        [bquery orderByDescending:@"updatedAt"];
+        [bquery includeKey:@"pictures"];
+        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+            for (BmobObject *obj in array) {
+                //打印相关信息
+                static  int i = 0;
+                NSLog(@"%@",obj);
+//                [_downLoaddata  ]
+                NSLog(@"obj.content String == %@",[obj objectForKey:@"content"]);
+                NSLog(@"obj.mood == %@",[obj objectForKey:@"mood"]);
+                NSLog(@"obj.pictureDeal == %@",[obj objectForKey:@"pictureDeal"]);
+                NSLog(@"obj.userID == %@",[obj objectForKey:@"userID"]);
+                NSLog(@"obj.pictureUrl == %@",[obj objectForKey:@"pictureUrl"]);
+                NSArray *array = [obj objectForKey:@"pictureUrl"];
+                if (array.count != 0) {
+                    NSString *filename = [NSString stringWithFormat:@"%@", array[i]] ;
+                    UIImage  *image = [self getImageFromURL:filename];
+                    NSLog(@"%@",image);
+                }
+                
+            }
+        }];
+
+    }
+    return _downLoaddata;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -45,12 +81,39 @@ static NSString *BasicCell1 = @"BasicCell1";
     }
     self.dataList = [temDataArray copy];
     NSLog(@"self.dataList ---%@",self.dataList);
+    UINavigationBar *bar=[UINavigationBar appearance];
+    UIBarButtonItem *barItem=[UIBarButtonItem appearance];
+    //2. 设置导航栏文字的主题
+    [bar setTitleTextAttributes:@{
+                                  NSForegroundColorAttributeName:[UIColor whiteColor],
+                                  }];
+    //设置navigationbaritem上面的颜色  该item上边的文字样式
+    
+    NSDictionary *fontDic=@{
+                            NSForegroundColorAttributeName:[UIColor whiteColor],
+                            NSFontAttributeName:[UIFont systemFontOfSize:16.f],  //粗体
+                            };
+    [barItem setTitleTextAttributes:fontDic
+                           forState:UIControlStateNormal];
+    [barItem setTitleTextAttributes:fontDic
+                           forState:UIControlStateHighlighted];
+    // 5.设置状态栏样式
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 /**
  初始化板块主页
  */
 -(void)initTableView{
+    
     [_mytableView registerNib:[UINib nibWithNibName:@"BasicCell" bundle:nil] forCellReuseIdentifier:BasicCell1];
+}
+//根据url下载图片
+-(UIImage *)getImageFromURL:(NSString *)fileURL{
+    NSLog(@"执行图片下载函数  ");
+    UIImage *reslut;
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
+    reslut = [UIImage imageWithData:data];
+    return reslut;
 }
 -(void)setting1{
     
