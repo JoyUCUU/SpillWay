@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *checkCode;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *checkPassword;
+@property (weak, nonatomic) IBOutlet UIButton *returnmain;
 @end
 
 @implementation SWRegistUserViewController
@@ -41,6 +42,10 @@
     [self.registButton addTarget:self action:@selector(regist) forControlEvents:UIControlEventTouchUpInside];
     [_requestCheckCode addTarget:self action:@selector(requestCheckCoder) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
+    [self.returnmain addTarget:self action:@selector(backmain) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)backmain{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

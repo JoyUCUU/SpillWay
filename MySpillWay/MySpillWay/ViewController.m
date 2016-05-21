@@ -11,6 +11,7 @@
 #import "WhiteTableViewController.h"
 #import "JTNavigationController.h"
 #import <UIKit/UIKit.h>
+#import "SWReleaseViewController.h"
 
 @interface ViewController ()
 
@@ -20,11 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BlackTableViewController *blackVC = [[BlackTableViewController alloc] init];
+    SWReleaseViewController *reVC = [[SWReleaseViewController alloc] init];
     UITabBarItem *fristItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
-    blackVC.title = @"me";
-    blackVC.tabBarItem  = fristItem;
-    JTNavigationController *fristNav = [[JTNavigationController alloc] initWithRootViewController:blackVC];
+    reVC.title = @"发布";
+    reVC.tabBarItem = fristItem;
+    JTNavigationController *fristNav = [[JTNavigationController alloc] initWithRootViewController:reVC];
+//    BlackTableViewController *blackVC = [[BlackTableViewController alloc] init];
+//    UITabBarItem *fristItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
+//    blackVC.title = @"me";
+//    blackVC.tabBarItem  = fristItem;
+//    JTNavigationController *fristNav = [[JTNavigationController alloc] initWithRootViewController:blackVC];
     
     WhiteTableViewController *whiteVC = [[WhiteTableViewController alloc] init];
     UITabBarItem *secondItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:2];

@@ -63,6 +63,8 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+   
     static  NSString *CellIdentifier = @"CellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
     CellIdentifier];
@@ -80,49 +82,55 @@
 //        [cell setLayoutMargins:UIEdgeInsetsZero];
 //    }
     
-    
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 60, 60)];
-            imageView.image = [UIImage imageNamed:@"86.png"];
-            [cell.contentView addSubview:imageView];
-            imageView.layer.masksToBounds = YES;
-            imageView.layer.cornerRadius = 30;
-            /*
-             
-             self.myAvatar.frame = CGRectMake(60,60, 40, 40);
-             
-             self.myAvatar.layer.masksToBounds =YES;
-             
-             self.myAvatar.layer.cornerRadius =50;
-             
-             [self.view addSubview:self.myAvatar];
-             */
-            BmobUser *bUser = [BmobUser getCurrentUser];
-            if (bUser) {
-                UILabel *cellLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 40, 150, 15)];
-                cellLabel.textColor = [UIColor grayColor];
-                cellLabel.text = [NSString stringWithFormat:@"ID:%@",bUser.objectId];
-                [cell.contentView addSubview:cellLabel];
+    //获取当前用户的数据
+    BmobUser *bUser = [BmobUser getCurrentObject];
+    NSLog(@"bUser 设置界面%@",bUser);
+    if (bUser) {
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 60, 60)];
+                imageView.image = [UIImage imageNamed:@"86.png"];
+                [cell.contentView addSubview:imageView];
+                imageView.layer.masksToBounds = YES;
+                imageView.layer.cornerRadius = 30;
+                /*
+                 
+                 self.myAvatar.frame = CGRectMake(60,60, 40, 40);
+                 
+                 self.myAvatar.layer.masksToBounds =YES;
+                 
+                 self.myAvatar.layer.cornerRadius =50;
+                 
+                 [self.view addSubview:self.myAvatar];
+                 */
+
+                    UILabel *cellLabel = [[UILabel alloc] initWithFrame:CGRectMake(100, 40, 150, 15)];
+                    cellLabel.textColor = [UIColor grayColor];
+                    cellLabel.text = [NSString stringWithFormat:@"ID:%@",bUser.objectId];
+                    [cell.contentView addSubview:cellLabel];
+                
             }
-            
         }
+        if (indexPath.section == 1) {
+            cell.textLabel.textColor = [UIColor grayColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:13];
+            if (indexPath.row == 0) {
+                cell.textLabel.text = [NSString stringWithFormat:@"  昵称 ： %@",[bUser objectForKey:@"nick"]];
+            }else if (indexPath.row == 1) {
+                cell.textLabel.text = [NSString stringWithFormat:@"  职业 ： %@",[bUser objectForKey:@"position"]];
+//                cell.textLabel.text = @"  职业 ： 学生";
+            }else if (indexPath.row == 2) {
+                cell.textLabel.text = [NSString stringWithFormat:@"  爱好 ： %@",[bUser objectForKey:@"hobby"]];
+//                cell.textLabel.text = @"  爱好 ： 睡觉";
+            }else if (indexPath.row == 3) {
+                cell.textLabel.text = [NSString stringWithFormat:@"  注册时间 ： %@",[bUser objectForKey:@"createdAt"]];
+//                cell.textLabel.text = @"  注册时间 ： 2016-5-6";
+            }else if (indexPath.row == 4) {
+                cell.textLabel.text = @"  设置界面";
+            }
+        } 
     }
-    if (indexPath.section == 1) {
-        cell.textLabel.textColor = [UIColor grayColor];
-        cell.textLabel.font = [UIFont systemFontOfSize:13];
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"  昵称 ： 烤翅";
-        }else if (indexPath.row == 1) {
-            cell.textLabel.text = @"  职业 ： 学生";
-        }else if (indexPath.row == 2) {
-            cell.textLabel.text = @"  爱好 ： 睡觉";
-        }else if (indexPath.row == 3) {
-            cell.textLabel.text = @"  注册时间 ： 2016-5-6";
-        }else if (indexPath.row == 4) {
-            cell.textLabel.text = @"  设置界面";
-        }
-    }
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }

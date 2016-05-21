@@ -19,33 +19,33 @@
 
 @implementation JTWrapNavigationController
 
-- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
-    return [[JTBaseNavigationController shareNavgationController] popViewControllerAnimated:animated];
-}
+//- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+//    return [[JTBaseNavigationController shareNavgationController] popViewControllerAnimated:animated];
+//}
 
 - (NSArray<UIViewController *> *)popToRootViewControllerAnimated:(BOOL)animated {
    return [[JTBaseNavigationController shareNavgationController] popToRootViewControllerAnimated:animated];
 }
 
-- (NSArray<UIViewController *> *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    NSInteger index = [[JTBaseNavigationController shareNavgationController].rootViewControllers indexOfObject:viewController];
-    return [[JTBaseNavigationController shareNavgationController] popToViewController:[JTBaseNavigationController shareNavgationController].viewControllers[index] animated:animated];
-}
+//- (NSArray<UIViewController *> *)popToViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    NSInteger index = [[JTBaseNavigationController shareNavgationController].rootViewControllers indexOfObject:viewController];
+//    return [[JTBaseNavigationController shareNavgationController] popToViewController:[JTBaseNavigationController shareNavgationController].viewControllers[index] animated:animated];
+//}
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-    UIImage *backButtonImage;
-    
-    if ([JTBaseNavigationController shareNavgationController].backButtonImage) {
-        backButtonImage = [JTBaseNavigationController shareNavgationController].backButtonImage;
-    } else {
-        backButtonImage = [UIImage imageNamed:kDefaultBackImageName];
-    }
-    
-    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(didTapBackButton)];
-    
-    [[JTBaseNavigationController shareNavgationController] pushViewController:[JTWrapViewController wrapViewControllerWithViewController:viewController] animated:animated];
-}
+//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    
+//    UIImage *backButtonImage;
+//    
+//    if ([JTBaseNavigationController shareNavgationController].backButtonImage) {
+//        backButtonImage = [JTBaseNavigationController shareNavgationController].backButtonImage;
+//    } else {
+//        backButtonImage = [UIImage imageNamed:@"86.png"];
+//    }
+//    
+//    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(didTapBackButton)];
+//    
+//    [[JTBaseNavigationController shareNavgationController] pushViewController:[JTWrapViewController wrapViewControllerWithViewController:viewController] animated:animated];
+//}
 
 - (void)didTapBackButton {
     [[JTBaseNavigationController shareNavgationController] popViewControllerAnimated:YES];
@@ -57,17 +57,17 @@
 
 @implementation JTWrapViewController
 
-+ (JTWrapViewController *)wrapViewControllerWithViewController:(UIViewController *)viewController {
-    
-    JTWrapNavigationController *wrapNavController = [[JTWrapNavigationController alloc] init];
-    wrapNavController.viewControllers = @[viewController];
-    
-    JTWrapViewController *wrapViewController = [[JTWrapViewController alloc] init];
-    [wrapViewController.view addSubview:wrapNavController.view];
-    [wrapViewController addChildViewController:wrapNavController];
-    
-    return wrapViewController;
-}
+//+ (JTWrapViewController *)wrapViewControllerWithViewController:(UIViewController *)viewController {
+//    
+//    JTWrapNavigationController *wrapNavController = [[JTWrapNavigationController alloc] init];
+//    wrapNavController.viewControllers = @[viewController];
+//    
+//    JTWrapViewController *wrapViewController = [[JTWrapViewController alloc] init];
+//    [wrapViewController.view addSubview:wrapNavController.view];
+//    [wrapViewController addChildViewController:wrapNavController];
+//    
+//    return wrapViewController;
+//}
 
 //- (UITabBarItem *)tabBarItem {
 //    return [self rootViewController].tabBarItem;
@@ -77,13 +77,13 @@
     return [self rootViewController].title;
 }
 
-//- (UIViewController *)childViewControllerForStatusBarStyle {
-//    return [self rootViewController];
-//}
+- (UIViewController *)childViewControllerForStatusBarStyle {
+    return [self rootViewController];
+}
 
-//- (UIViewController *)childViewControllerForStatusBarHidden {
-//    return [self rootViewController];
-//}
+- (UIViewController *)childViewControllerForStatusBarHidden {
+    return [self rootViewController];
+}
 
 - (UIViewController *)rootViewController {
     JTWrapNavigationController *wrapNavController = self.childViewControllers.firstObject;

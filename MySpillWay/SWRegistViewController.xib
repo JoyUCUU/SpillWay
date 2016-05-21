@@ -65,7 +65,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpc-VV-HM8">
                     <rect key="frame" x="120" y="602" width="133" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="去注册？">
+                    <state key="normal" title="重新选择登陆方式">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>

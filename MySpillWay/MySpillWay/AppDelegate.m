@@ -32,6 +32,7 @@
     WhiteTableViewController *wtVC = [[WhiteTableViewController alloc] init];
     
     self.window.rootViewController = [[JTBaseNavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
+
     
 ////     开启全屏返回模式
 //    [JTBaseNavigationController shareNavgationController].fullScreenPopGestureEnable = YES;

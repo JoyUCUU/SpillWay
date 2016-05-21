@@ -1,4 +1,4 @@
-//
+   //
 //  WhiteTableViewController.m
 //  MySpillWay
 //
@@ -21,50 +21,62 @@
 @property (nonatomic,strong) NSArray *dataList;
 @property (nonatomic ,strong) UINavigationController *navigatinVC;
 @property (nonatomic ,strong) NSArray *downLoaddata;
+@property (nonatomic ,strong) NSArray *tempData;
+@property (nonatomic ,strong) NSArray *ispicarray;
 @end
 
 @implementation WhiteTableViewController
 static NSString *BasicCell1 = @"BasicCell1";
 #pragma mark -懒加载
--(NSArray *)downLoaddata{
-    if (_downLoaddata  == nil) {
-        //查找release表
-        BmobQuery *bquery = [BmobQuery queryWithClassName:@"release"];
-        //查找release表
-        bquery.limit = 10;
-        [bquery orderByDescending:@"updatedAt"];
-        [bquery includeKey:@"pictures"];
-        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-            for (BmobObject *obj in array) {
-                //打印相关信息
-                static  int i = 0;
-                NSLog(@"%@",obj);
-//                [_downLoaddata  ]
-                NSLog(@"obj.content String == %@",[obj objectForKey:@"content"]);
-                NSLog(@"obj.mood == %@",[obj objectForKey:@"mood"]);
-                NSLog(@"obj.pictureDeal == %@",[obj objectForKey:@"pictureDeal"]);
-                NSLog(@"obj.userID == %@",[obj objectForKey:@"userID"]);
-                NSLog(@"obj.pictureUrl == %@",[obj objectForKey:@"pictureUrl"]);
-                NSArray *array = [obj objectForKey:@"pictureUrl"];
-                if (array.count != 0) {
-                    NSString *filename = [NSString stringWithFormat:@"%@", array[i]] ;
-                    UIImage  *image = [self getImageFromURL:filename];
-                    NSLog(@"%@",image);
-                }
-                
-            }
-        }];
+//-(NSArray *)downLoaddata{
+//    if (_downLoaddata  == nil) {
+//        //查找release表
+//        BmobQuery *bquery = [BmobQuery queryWithClassName:@"release"];
+//        //查找release表
+//        bquery.limit = 10;
+//        [bquery orderByDescending:@"updatedAt"];
+//        [bquery includeKey:@"pictures"];
+//        [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+//            for (BmobObject *obj in array) {
+//                //打印相关信息
+//                static  int i = 0;
+//                NSLog(@"%@",obj);
+////                [_downLoaddata  ]
+//                NSLog(@"obj.content String == %@",[obj objectForKey:@"content"]);
+//                NSLog(@"obj.mood == %@",[obj objectForKey:@"mood"]);
+//                NSLog(@"obj.pictureDeal == %@",[obj objectForKey:@"pictureDeal"]);
+//                NSLog(@"obj.userID == %@",[obj objectForKey:@"userID"]);
+//                NSLog(@"obj.pictureUrl == %@",[obj objectForKey:@"pictureUrl"]);
+//                NSArray *array = [obj objectForKey:@"pictureUrl"];
+//                if (array.count != 0) {
+//                    NSString *filename = [NSString stringWithFormat:@"%@", array[i]] ;
+//                    UIImage  *image = [self getImageFromURL:filename];
+//                    NSLog(@"%@",image);
+//                }
+//                
+//            }
+//        }];
+//
+//    }
+//    return _downLoaddata;
+//}
 
-    }
-    return _downLoaddata;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    BmobQuery *query = [BmobQuery queryWithClassName:@"release"];
+//    query.limit = 10;
+//    [query orderByDescending:@"updatedAt"];
+//    [query includeKey:@"pictures"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+//        for (BmobObject *obj in array) {
+//            NSLog(@"obj ******%@",obj);
+//        }
+//    }];
     [self initTableView];
     self.title = @"主界面";
     self.view.backgroundColor = [UIColor grayColor];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(didTapNextButton)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStylePlain target:self action:@selector(doTapNextButton)];
     //改变navigationBar的背景颜色
     self.navigationController.navigationBar.barTintColor = [UIColor orangeColor];
     
@@ -99,18 +111,66 @@ static NSString *BasicCell1 = @"BasicCell1";
                            forState:UIControlStateHighlighted];
     // 5.设置状态栏样式
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    
+    
+    
+    UIBarButtonItem *one  = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
+    [self setToolbarItems:[NSArray arrayWithObjects:one
+                           , nil]];
 }
+-(void)test3{
+
+
+    
+}
+//-(void)test3{
+//    BmobQuery *query = [BmobQuery queryWithClassName:@"release"];
+//    query.limit = 10;
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+//        for (BmobObject *obj in array) {
+//            NSLog(@"obj ******%@",obj);
+//        }
+//    }];
+//}
 /**
  初始化板块主页
  */
 -(void)initTableView{
-    
-    [_mytableView registerNib:[UINib nibWithNibName:@"BasicCell" bundle:nil] forCellReuseIdentifier:BasicCell1];
+    //    查找release表
+    BmobQuery *bquery = [BmobQuery queryWithClassName:@"release"];
+    //查找release表
+    bquery.limit = 10;
+    [bquery orderByDescending:@"createdAt"];
+    [bquery includeKey:@"userID"];
+    [bquery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+        for (BmobObject *obj in array) {
+            //打印相关信息
+            self.tempData = array;
+            static  int i = 0;
+            NSLog(@"self.tempData$$$$$$$$$$%@",self.tempData);
+//            NSLog(@"obj.content String == %@",[obj objectForKey:@"content"]);
+//            NSLog(@"obj.mood == %@",[obj objectForKey:@"mood"]);
+//            NSLog(@"obj.pictureDeal == %@",[obj objectForKey:@"pictureDeal"]);
+//            NSLog(@"obj.userID == %@",[obj objectForKey:@"userID"]);
+//            NSLog(@"obj.pictureUrl == %@",[obj objectForKey:@"pictureUrl"]);
+            _ispicarray = [obj objectForKey:@"pictureUrl"];
+            if (_ispicarray.count != 0) {
+                NSString *filename = [NSString stringWithFormat:@"%@", array[i]] ;
+                UIImage  *image = [self getImageFromURL:filename];
+                NSLog(@"%@",image);
+            }
+            
+        }
+    }];
+        [_mytableView registerNib:[UINib nibWithNibName:@"BasicCell" bundle:nil] forCellReuseIdentifier:BasicCell1];
 }
 //根据url下载图片
 -(UIImage *)getImageFromURL:(NSString *)fileURL{
     NSLog(@"执行图片下载函数  ");
     UIImage *reslut;
+    CGSize temp = CGSizeMake(65, 65);
+//    reslut.size = temp;
     NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:fileURL]];
     reslut = [UIImage imageWithData:data];
     return reslut;
@@ -121,12 +181,12 @@ static NSString *BasicCell1 = @"BasicCell1";
 //    [self presentViewController:piVC animated:YES completion:nil];
     [self.navigationController pushViewController:piVC animated:YES];
 }
-- (void)didTapNextButton {
-    SWReleaseViewController *reVC = [[SWReleaseViewController alloc] init];
-//    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
+- (void)doTapNextButton {
+//    SWReleaseViewController *reVC = [[SWReleaseViewController alloc] init];
+    SWChooseFormLoginViewController *cfVC = [[SWChooseFormLoginViewController alloc] init];
 //    SWRegistViewController *regLog = [[SWRegistViewController alloc] init];
-//    [self presentViewController:reVC animated:YES completion:nil];
-    [self.navigationController pushViewController:reVC animated:NO];
+    [self presentViewController:cfVC animated:YES completion:nil];
+//    [self.navigationController pushViewController:cfVC animated:NO];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
@@ -171,7 +231,7 @@ static NSString *BasicCell1 = @"BasicCell1";
     cell.image3= [rowData objectForKey:@"image3"];
     cell.image4 = [rowData objectForKey:@"image4"];
     
-    UIImageView *avatar = (UIImageView *)[cell viewWithTag:0];
+    UIImageView *avatar = (UIImageView *)[cell viewWithTag:12];
     UILabel *nickname = (UILabel *)[cell viewWithTag:1];
     UILabel *time = (UILabel *)[cell viewWithTag:2];
     UILabel *priselabel = (UILabel *)[cell viewWithTag:4];
@@ -184,23 +244,47 @@ static NSString *BasicCell1 = @"BasicCell1";
     UIImageView *image3 = (UIImageView *)[cell viewWithTag:10];
     UIImageView *image4 = (UIImageView *)[cell viewWithTag:11];
     
-    //    image.layer.cornerRadius = 17.5;
-    //
-    //    [self addSubview:image];
+//    //    image.layer.cornerRadius = 17.5;
+//    //
+//    //    [self addSubview:image];
 //    avatar.image = [UIImage imageNamed:[rowData objectForKey:@"Avatar"]];
-    NSLog(@"[rowData objectForKey:0-----%@",[rowData objectForKey:@"Avatar"]);
-    nickname.text = [rowData objectForKey:@"nick"];
-    time.text = [rowData objectForKey:@"releaseTime"];
-    priselabel.text = [rowData objectForKey:@"praiseNum"];
-    priseBtn.imageView.image = [UIImage imageNamed:[rowData objectForKey:@"priseBtn"]] ;
-    conmmentLabel.text = [rowData objectForKey:@"commentNum"];
-    commentBtn.imageView.image = [UIImage imageNamed:[rowData objectForKey:@"commentBtn"]];
-    NSLog(@"[rowData objectForKey:----%@",[rowData objectForKey:@"commentBtn"]);
-    content.text = [rowData objectForKey:@"content"];
-    image1.image = [UIImage imageNamed:[rowData objectForKey:@"image1"]];
-    image2.image = [UIImage imageNamed:[rowData objectForKey:@"image2"]];
-    image3.image = [UIImage imageNamed:[rowData objectForKey:@"image3"]];
-    image4.image = [UIImage imageNamed:[rowData objectForKey:@"image4"]];
+//    NSLog(@"[rowData objectForKey:0-----%@",[rowData objectForKey:@"Avatar"]);
+//    nickname.text = [rowData objectForKey:@"nick"];
+//    time.text = [rowData objectForKey:@"releaseTime"];
+//    priselabel.text = [rowData objectForKey:@"praiseNum"];
+//    priseBtn.imageView.image = [UIImage imageNamed:[rowData objectForKey:@"priseBtn"]] ;
+//    conmmentLabel.text = [rowData objectForKey:@"commentNum"];
+//    commentBtn.imageView.image = [UIImage imageNamed:[rowData objectForKey:@"commentBtn"]];
+//    NSLog(@"[rowData objectForKey:----%@",[rowData objectForKey:@"commentBtn"]);
+//    content.text = [rowData objectForKey:@"content"];
+//    image1.image = [UIImage imageNamed:[rowData objectForKey:@"image1"]];
+//    image2.image = [UIImage imageNamed:[rowData objectForKey:@"image2"]];
+//    image3.image = [UIImage imageNamed:[rowData objectForKey:@"image3"]];
+//    image4.image = [UIImage imageNamed:[rowData objectForKey:@"image4"]];
+    
+        avatar.image = [UIImage imageNamed:[rowData objectForKey:@"Avatar"]];
+        NSLog(@"[rowData objectForKey:0-----%@",[rowData objectForKey:@"Avatar"]);
+        nickname.text = [rowData objectForKey:@"nick"];
+        time.text = [rowData objectForKey:@"releaseTime"];
+        priselabel.text = [rowData objectForKey:@"praiseNum"];
+        priseBtn.imageView.image = [UIImage imageNamed:[rowData objectForKey:@"priseBtn"]] ;
+        conmmentLabel.text = [rowData objectForKey:@"commentNum"];
+        commentBtn.imageView.image = [UIImage imageNamed:[rowData objectForKey:@"commentBtn"]];
+        NSLog(@"[rowData objectForKey:----%@",[rowData objectForKey:@"commentBtn"]);
+        content.text = [rowData objectForKey:@"content"];
+    static int i = 0;
+    BmobObject *tempobj = self.tempData[i];
+    NSArray *picarray = [tempobj objectForKey:@"pictureUrl"];
+    
+    NSString *filename0 = [NSString stringWithFormat:@"%@", picarray[0]] ;
+    image1.image = [self getImageFromURL:filename0];
+    NSString *filename1 = [NSString stringWithFormat:@"%@", picarray[1]] ;
+    image2.image = [self getImageFromURL:filename1];
+    NSString *filename2 = [NSString stringWithFormat:@"%@", picarray[2]] ;
+    image3.image = [self getImageFromURL:filename2];
+    NSString *filename3 = [NSString stringWithFormat:@"%@", picarray[3]] ;
+    image4.image = [self getImageFromURL:filename3];
+
     return cell;
 }
 

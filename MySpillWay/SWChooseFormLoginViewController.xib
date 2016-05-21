@@ -13,6 +13,7 @@
                 <outlet property="coImage1" destination="YyB-LM-FFo" id="4hI-Ql-NkL"/>
                 <outlet property="coImage2" destination="wux-FB-8I5" id="9QN-DW-LpU"/>
                 <outlet property="coImage3" destination="tXp-eH-hUw" id="2c5-uo-NGK"/>
+                <outlet property="mainButton" destination="7kD-19-A6c" id="6sE-uX-Rtx"/>
                 <outlet property="regist" destination="lzw-0p-E3l" id="IiL-FK-Fp4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -75,10 +76,17 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lzw-0p-E3l">
-                    <rect key="frame" x="151" y="584" width="73" height="30"/>
+                    <rect key="frame" x="228" y="579" width="73" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="去注册？">
                         <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kD-19-A6c">
+                    <rect key="frame" x="95" y="579" width="46" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="主菜单">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>

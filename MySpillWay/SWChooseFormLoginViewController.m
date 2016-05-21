@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *coButton2;
 @property (weak, nonatomic) IBOutlet UIButton *coButton3;
 @property (weak, nonatomic) IBOutlet UIButton *regist;
+@property (weak, nonatomic) IBOutlet UIButton *mainButton;
 
 @end
 
@@ -29,6 +30,10 @@
     [self.regist addTarget:self action:@selector(registUser) forControlEvents:UIControlEventTouchUpInside];
     [self.coButton2 addTarget:self action:@selector(weixinLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.coButton3 addTarget:self action:@selector(QQLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.mainButton addTarget:self action:@selector(returnMain) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)returnMain{
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 -(void)QQLogin{
    // UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:UMShareToQQ];

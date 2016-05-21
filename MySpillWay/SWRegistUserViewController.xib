@@ -13,6 +13,7 @@
                 <outlet property="phoneNumber" destination="mGH-ux-6AR" id="HMB-S9-st3"/>
                 <outlet property="registButton" destination="LaV-L9-TVK" id="lYf-dT-7qR"/>
                 <outlet property="requestCheckCode" destination="lJ7-K7-vjA" id="G4K-PV-VmM"/>
+                <outlet property="returnmain" destination="y9i-3l-B9j" id="rqN-pZ-22y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -186,6 +187,13 @@
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9i-3l-B9j">
+                    <rect key="frame" x="132" y="371" width="106" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="重新选择登陆方式">
+                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
